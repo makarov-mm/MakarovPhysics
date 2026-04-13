@@ -33,7 +33,8 @@ The application uses custom implementations for both simulation logic and render
 
 ## Screenshots
 
-*(Add screenshots here)*
+![MakarovPhysics](images/screenshot1.png)
+![MakarovPhysics](images/screenshot2.png)
 
 ## Purpose
 
@@ -42,6 +43,3 @@ This project was created as an experimental environment for exploring computer g
 ## Notes
 
 The project reflects practical experimentation with graphics and simulation concepts rather than production-level engineering.
-
-![MakarovPhysics](images/screenshot1.png)
-![MakarovPhysics](images/screenshot2.png)
