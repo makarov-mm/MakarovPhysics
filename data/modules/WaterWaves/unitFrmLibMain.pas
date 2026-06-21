@@ -289,12 +289,12 @@ begin
   glDisable(GL_TEXTURE_GEN_S);
   glDisable(GL_TEXTURE_GEN_T);
 
-  LoadTexture('data\textures\skybox_a.dat', 1, 2);
-  LoadTexture('data\textures\skybox_a.dat', 2, 3);
-  LoadTexture('data\textures\skybox_a.dat', 3, 4);
-  LoadTexture('data\textures\skybox_a.dat', 4, 5);
-  LoadTexture('data\textures\skybox_a.dat', 5, 6);
-  LoadTexture('data\textures\skybox_a.dat', 6, 7);
+  LoadTexture('data\textures\skybox.dat', 1, 2);
+  LoadTexture('data\textures\skybox.dat', 2, 3);
+  LoadTexture('data\textures\skybox.dat', 3, 4);
+  LoadTexture('data\textures\skybox.dat', 4, 5);
+  LoadTexture('data\textures\skybox.dat', 5, 6);
+  LoadTexture('data\textures\skybox.dat', 6, 7);
 
   glClearColor(0, 0, 0, 1);
   RenderTimer.Enabled:=True;

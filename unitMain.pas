@@ -414,7 +414,7 @@ begin
   // rotation is driven by how far the cursor sits from the screen centre
   center := ClientWidth div 2;
   if mouseX < 0 then mouseX := center;
-  offset := mouseX - center;
+  offset := center - mouseX;
   dead := ClientWidth div 8;   // central dead zone where the carousel rests
 
   if Abs(offset) > dead then
