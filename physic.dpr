@@ -8,7 +8,7 @@ uses
 
 begin
   Application.Initialize;
-  Application.Title := 'Комплекс Физических Программ';
+  Application.Title := 'Physics Programs Complex';
   Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
 end.

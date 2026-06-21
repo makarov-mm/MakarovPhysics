@@ -2,7 +2,7 @@ object frmGraphics: TfrmGraphics
   Left = 227
   Top = 140
   BorderStyle = bsSizeToolWin
-  Caption = #1043#1088#1072#1092#1080#1082
+  Caption = 'Graph'
   ClientHeight = 431
   ClientWidth = 671
   Color = clBtnFace
@@ -131,7 +131,7 @@ object frmGraphics: TfrmGraphics
     ItemHeight = 13
     ItemIndex = 0
     TabOrder = 0
-    Text = #1043#1088#1091#1079' 1'
+    Text = 'Weight 1'
     Items.Strings = (
       #1043#1088#1091#1079' 1')
   end

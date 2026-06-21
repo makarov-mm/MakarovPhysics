@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2006.12.04 18:07:59.437.bdsproj,C:\Documents and Settings\NightmareZ\Мои документы\Borland Studio Projects\Project1.bdsproj=C:\Documents and Settings\NightmareZ\Рабочий стол\MakarovTools\MakarovTools.bdsproj</Transaction>
-    <Transaction>2006.12.04 18:15:00.171.pas,C:\Documents and Settings\NightmareZ\Рабочий стол\MakarovTools\Unit1.pas=C:\Documents and Settings\NightmareZ\Рабочий стол\MakarovTools\unitFrmAbout.pas</Transaction>
-    <Transaction>2006.12.04 18:15:00.171.dfm,C:\Documents and Settings\NightmareZ\Рабочий стол\MakarovTools\Unit1.dfm=C:\Documents and Settings\NightmareZ\Рабочий стол\MakarovTools\unitFrmAbout.dfm</Transaction>
-  </Transactions>
-</BorlandProject>

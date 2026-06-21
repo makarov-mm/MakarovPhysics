@@ -6,49 +6,49 @@ uses
   Windows, OpenGL, SysUtils, unitFrmGraphics;
 
 type
-  {массив для хранения значений}
+  {array for storing values}
   TMyArr = array[1..250] of Extended;
 
-  {класс пружины}
+  {spring class}
   TSpring = class
   public
-    x1,{координата начала}
-    x2,{координата конца}
-    deflen,{начальная длина (без растяжения или сжатия)}
-    k:Extended;{жёсткость}
+    x1,{start coordinate}
+    x2,{end coordinate}
+    deflen,{initial length (without stretching or compression)}
+    k:Extended;{stiffness}
     procedure Render;
   end;
 
-  {класс груза}
+  {weight class}
   TSphere = class
   private
     quadobj:GLUQuadricObj;
     procedure UpgradeArrays(x1,x2,deflen:Extended);
   public
-    mass,{масса}
-    radius,{радиус}
-    x,{координата центра}
-    speed,{скорость}
-    acceleration:Extended;{ускорение}
-    ArrOfX,{массив смещений}
-    ArrOfSpeed,{массив скоростей}
-    ArrOfAcceleration:TMyArr;{массив ускорений}
+    mass,{mass}
+    radius,{radius}
+    x,{center coordinate}
+    speed,{speed}
+    acceleration:Extended;{acceleration}
+    ArrOfX,{array of displacements}
+    ArrOfSpeed,{array of speeds}
+    ArrOfAcceleration:TMyArr;{array of accelerations}
     constructor Create;
     destructor Destroy;override;
     procedure Render(x1,x2,deflen:Extended);
   end;
 
-  {класс системы осцилляторов}
+  {oscillator system class}
   TOscillSystem = class
   private
-    NumbOfSprings:Integer;{количество пружин}
-    NumbOfSpheres:Integer;{количество грузов}
-    Handle:THandle;{хэндл главного окна}
+    NumbOfSprings:Integer;{number of springs}
+    NumbOfSpheres:Integer;{number of weights}
+    Handle:THandle;{main window handle}
     procedure Calculate(CollisionDetection:Boolean);
   public
-    ArrOfSprings:Array of TSpring;{массив пружин}
-    ArrOfSpheres:Array of TSphere;{массив грузов}
-    minX,maxX:Extended;{минимальная и максимальная координаты в системе}
+    ArrOfSprings:Array of TSpring;{array of springs}
+    ArrOfSpheres:Array of TSphere;{array of weights}
+    minX,maxX:Extended;{minimum and maximum coordinates in the system}
     constructor Create(ParentHandle:THandle);
     destructor Destroy;override;
     function Render(IsRun,CollisionDetection:Boolean):Boolean;
@@ -139,16 +139,16 @@ end;
 {=====================================================}
 
 procedure TOscillSystem.Calculate(CollisionDetection:Boolean);
-{расчёт движения}
+{motion calculation}
 const
-  dt=40/1000;{шаг интегрирования по времени}
+  dt=40/1000;{time integration step}
 var
   i,j:Integer;
 begin
-  {расчёт движения}
+  {motion calculation}
   for i:=0 to NumbOfSpheres-1 do
   begin
-    {вычисление ускорения}
+    {acceleration calculation}
     ArrOfSpheres[i].acceleration:=
       ((ArrOfSprings[i+1].k*
       ((ArrOfSprings[i+1].x2-ArrOfSprings[i+1].x1)-ArrOfSprings[i+1].deflen))/
@@ -156,9 +156,9 @@ begin
       ((ArrOfSprings[i].k*
       ((ArrOfSprings[i].x2-ArrOfSprings[i].x1)-ArrOfSprings[i].deflen))/
       ArrOfSpheres[i].mass);
-    {вычисление скорости}
+    {speed calculation}
     ArrOfSpheres[i].speed:=ArrOfSpheres[i].speed+ArrOfSpheres[i].acceleration*dt;
-    {рассчет коллизий}
+    {collision calculation}
     if CollisionDetection then
     begin
       if (ArrOfSpheres[0].x-ArrOfSpheres[0].radius)<minX then
@@ -176,10 +176,10 @@ begin
               (ArrOfSpheres[j+1].mass/(ArrOfSpheres[j].mass+ArrOfSpheres[j+1].mass));
           end;
     end;
-    {вычисление коодинаты}
+    {coordinate calculation}
     ArrOfSpheres[i].x:=ArrOfSpheres[i].x+ArrOfSpheres[i].speed*dt;
   end;
-  {коррекция пружин}
+  {spring correction}
   ArrOfSprings[0].x1:=minX;
   ArrOfSprings[0].x2:=ArrOfSpheres[0].x-ArrOfSpheres[0].radius;
   ArrOfSprings[NumbOfSprings-1].x2:=maxX;
@@ -194,7 +194,7 @@ begin
 end;
 
 function TOscillSystem.Render(IsRun,CollisionDetection:Boolean):Boolean;
-{рендеринг}
+{rendering}
 var
   i:Integer;
 begin
@@ -245,7 +245,7 @@ begin
 end;
 
 procedure TOscillSystem.AddSphere(mass,radius:Extended);
-{добавить груз}
+{add weight}
 var
   i:Integer;
   currLen:Extended;
@@ -266,11 +266,11 @@ begin
     ArrOfSpheres[NumbOfSpheres-1].radius:=radius;
     ArrOfSpheres[NumbOfSpheres-1].x:=currLen+radius;
   end else
-    MessageBox(Handle,'Добавьте сначала пружину','Ошибка',MB_OK);
+    MessageBox(Handle,'Add a spring first','Error',MB_OK);
 end;
 
 procedure TOscillSystem.AddSpring(k,len,dx:Extended);
-{добавить пружину}
+{add spring}
 var
   i:Integer;
   currLen:Extended;
@@ -292,11 +292,11 @@ begin
     ArrOfSprings[NumbOfSprings-1].deflen:=len;
     ArrOfSprings[NumbOfSprings-1].k:=k;
   end else
-    MessageBox(Handle,'Добавьте сначала груз','Ошибка',MB_OK);
+    MessageBox(Handle,'Add a weight first','Error',MB_OK);
 end;
 
 procedure TOscillSystem.DelPrev;
-{удалить предыдущий объект}
+{delete the previous object}
 begin
   if NumbOfSprings>NumbOfSpheres then
   begin
@@ -311,7 +311,7 @@ begin
       SetLength(ArrOfSpheres,NumbOfSpheres);
     end;
   if (NumbOfSprings=0) and (NumbOfSpheres=0) then
-    MessageBox(Handle,'Нечего больше удалять','Ошибка',MB_OK);
+    MessageBox(Handle,'Nothing left to delete','Error',MB_OK);
 end;
 
 function TOscillSystem.GetInfo(numb:Integer):ShortString;
@@ -320,21 +320,21 @@ var
 begin
   if (numb>=0) and (numb<NumbOfSpheres) then
   begin
-    s:='Количество пружин: '+IntToStr(NumbOfSprings)+#13#10+
-       'Количество грузов: '+IntToStr(NumbOfSpheres);
+    s:='Number of springs: '+IntToStr(NumbOfSprings)+#13#10+
+       'Number of weights: '+IntToStr(NumbOfSpheres);
     if NumbOfSpheres>numb then
-      s:=s+'Масса: '+FloatToStr(ArrOfSpheres[numb-1].mass)+#13#10+
-           'Координата: '+FloatToStr(ArrOfSpheres[numb-1].x)+#13#10+
-           'Скорость: '+FloatToStr(ArrOfSpheres[numb-1].speed)+#13#10+
-           'Ускорение: '+FloatToStr(ArrOfSpheres[numb-1].acceleration);
+      s:=s+'Mass: '+FloatToStr(ArrOfSpheres[numb-1].mass)+#13#10+
+           'Coordinate: '+FloatToStr(ArrOfSpheres[numb-1].x)+#13#10+
+           'Speed: '+FloatToStr(ArrOfSpheres[numb-1].speed)+#13#10+
+           'Acceleration: '+FloatToStr(ArrOfSpheres[numb-1].acceleration);
     Result:=s;
   end else
-    Result:='Количество пружин: '+IntToStr(NumbOfSprings)+#13#10+
-            'Количество грузов: '+IntToStr(NumbOfSpheres);
+    Result:='Number of springs: '+IntToStr(NumbOfSprings)+#13#10+
+            'Number of weights: '+IntToStr(NumbOfSpheres);
 end;
 
 function TOscillSystem.IsReady:Boolean;
-{готова ли система к вычислениям}
+{whether the system is ready for calculations}
 begin
   if (NumbOfSpheres>0) and
      (NumbOfSprings>0) and
@@ -345,7 +345,7 @@ begin
 end;
 
 procedure TOscillSystem.DrawGraphic(numb,param:Integer);
-{прорисовка графиков}
+{graphs rendering}
 var
   i:Integer;
 begin
@@ -364,12 +364,12 @@ begin
 end;
 
 procedure TOscillSystem.DelAll;
-{удалить все объекты}
+{delete all objects}
 var
   i:Integer;
 begin
   if (NumbOfSprings=0) and (NumbOfSpheres=0) then
-    MessageBox(Handle,'Нечего больше удалять','Ошибка',MB_OK);
+    MessageBox(Handle,'Nothing left to delete','Error',MB_OK);
   if NumbOfSpheres>0 then
     for i:=0 to NumbOfSpheres-1 do
       ArrOfSpheres[i].Destroy;

@@ -2,7 +2,7 @@ object frmOptions: TfrmOptions
   Left = 251
   Top = 110
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 564
   ClientWidth = 190
   Color = clBtnFace
@@ -116,10 +116,8 @@ object frmOptions: TfrmOptions
     003F8000003F8000003F8000003F8000003F8000003FC000003FE000003FF000
     003FF800007FFC0001FFFE0007FFFF001FFFFF807FFFFFC1FFFFFFE7FFFF}
   Menu = MainMenu
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
-  PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
     Left = 0
@@ -703,14 +701,14 @@ object frmOptions: TfrmOptions
     Top = 8
     Width = 177
     Height = 233
-    Caption = #1052#1072#1103#1090#1085#1080#1082
+    Caption = 'Pendulum'
     TabOrder = 0
     object groupDefVals: TGroupBox
       Left = 8
       Top = 16
       Width = 161
       Height = 113
-      Caption = #1053#1072#1095#1072#1083#1100#1085#1099#1077' '#1087#1072#1088#1072#1084#1077#1090#1088#1099
+      Caption = 'Initial parameters'
       TabOrder = 0
       object txtAngle: TLabeledEdit
         Left = 8
@@ -719,7 +717,7 @@ object frmOptions: TfrmOptions
         Height = 21
         EditLabel.Width = 57
         EditLabel.Height = 13
-        EditLabel.Caption = #1059#1075#1086#1083' ('#1075#1088#1072#1076')'
+        EditLabel.Caption = 'Angle (deg)'
         TabOrder = 0
         Text = '30'
       end
@@ -730,7 +728,7 @@ object frmOptions: TfrmOptions
         Height = 21
         EditLabel.Width = 91
         EditLabel.Height = 13
-        EditLabel.Caption = #1057#1082#1086#1088#1086#1089#1090#1100' ('#1075#1088#1072#1076'/c)'
+        EditLabel.Caption = 'Speed (deg/s)'
         TabOrder = 1
         Text = '0'
       end
@@ -742,7 +740,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 33
       EditLabel.Height = 13
-      EditLabel.Caption = #1044#1083#1080#1085#1072
+      EditLabel.Caption = 'Length'
       TabOrder = 1
       Text = '3'
     end
@@ -753,7 +751,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 131
       EditLabel.Height = 13
-      EditLabel.Caption = #1059#1089#1082#1086#1088#1077#1085#1080#1077' '#1089#1074#1086#1073'. '#1087#1072#1076#1077#1085#1080#1103
+      EditLabel.Caption = 'Free-fall accel.'
       TabOrder = 2
       Text = '9,81'
     end
@@ -763,7 +761,7 @@ object frmOptions: TfrmOptions
     Top = 312
     Width = 81
     Height = 25
-    Caption = #1055#1091#1089#1082'!'
+    Caption = 'Start!'
     TabOrder = 1
     OnClick = btnStartClick
   end
@@ -772,7 +770,7 @@ object frmOptions: TfrmOptions
     Top = 312
     Width = 89
     Height = 25
-    Caption = #1057#1090#1086#1087
+    Caption = 'Stop'
     Enabled = False
     TabOrder = 2
     OnClick = btnStopClick
@@ -782,14 +780,14 @@ object frmOptions: TfrmOptions
     Top = 248
     Width = 177
     Height = 57
-    Caption = #1042#1080#1079#1091#1072#1083#1080#1079#1072#1094#1080#1103
+    Caption = 'Visualization'
     TabOrder = 3
     object cbShowGrid: TCheckBox
       Left = 8
       Top = 24
       Width = 161
       Height = 17
-      Caption = #1054#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1089#1077#1090#1082#1091
+      Caption = 'Show grid'
       Checked = True
       State = cbChecked
       TabOrder = 0
@@ -809,7 +807,7 @@ object frmOptions: TfrmOptions
     Left = 8
     Top = 344
     object N1: TMenuItem
-      Caption = #1052#1077#1085#1102
+      Caption = 'Menu'
       object N5: TMenuItem
         Bitmap.Data = {
           EE030000424DEE03000000000000360000002800000012000000110000000100
@@ -844,7 +842,7 @@ object frmOptions: TfrmOptions
           633600D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+        Caption = 'About'
         ShortCut = 112
         OnClick = N5Click
       end
@@ -885,13 +883,13 @@ object frmOptions: TfrmOptions
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1042#1099#1093#1086#1076
+        Caption = 'Exit'
         ShortCut = 16472
         OnClick = N7Click
       end
     end
     object N2: TMenuItem
-      Caption = #1056#1072#1089#1095#1105#1090#1099
+      Caption = 'Calculations'
       object N3: TMenuItem
         Bitmap.Data = {
           9A020000424D9A0200000000000036000000280000000B000000110000000100
@@ -915,7 +913,7 @@ object frmOptions: TfrmOptions
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000D8E9ECD8E9EC007F00D8
           E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000}
-        Caption = #1055#1091#1089#1082'!'
+        Caption = 'Start!'
         ShortCut = 16466
         OnClick = N3Click
       end
@@ -946,7 +944,7 @@ object frmOptions: TfrmOptions
           C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6D8E9ECD8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9EC}
-        Caption = #1057#1090#1086#1087
+        Caption = 'Stop'
         ShortCut = 16467
         OnClick = N4Click
       end

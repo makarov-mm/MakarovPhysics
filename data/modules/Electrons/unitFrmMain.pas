@@ -35,7 +35,7 @@ type
     rotation: Extended;
     MouseDown: Boolean;
     preX: Integer;
-    r: Extended;{расстояние между пластинами}
+    r: Extended;{distance between plates}
     el: Array[1..1000] of TElectron;
     procedure SetDefaultWindowsPosition;
     procedure SetDCPixelFormat;
@@ -47,9 +47,9 @@ type
     procedure Calc;
   public
     IsRun: Boolean;
-    StartSpeed: Extended;{начальная скорость электронов}
-    StartAngle: Extended;{угол вылета электронов}
-    p1, p2: Extended;{потенциалы}
+    StartSpeed: Extended;{initial electron speed}
+    StartAngle: Extended;{electron launch angle}
+    p1, p2: Extended;{potentials}
   end;
 
 var
@@ -64,7 +64,7 @@ uses unitFrmOptions;
 {$R *.dfm}
 
 procedure InitLibrary(App,CallForm:THandle);
-{Инициализация библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
@@ -74,7 +74,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDCPixelFormat;
-{настройка формата пикселя}
+{pixel format setup}
 begin
   FillChar(pfd,SizeOf(pfd),0);
   pfd.dwFlags := PFD_SUPPORT_OPENGL or
@@ -85,7 +85,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDefaultWindowsPosition;
-{настройка расположения окон}
+{window layout setup}
 const
   w = 209;
 begin
@@ -123,7 +123,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawBox(x, y, z, xWidth, yWidth, zWidth: Single);
-{прямоугольный параллелепипед}
+{rectangular parallelepiped}
 begin
   glBegin(GL_QUADS);
     glNormal3f(-1, 0, 0);
@@ -173,16 +173,16 @@ begin
   RenderTimer.Enabled := False;
   MouseDown := False;
 
-  {завершение работы OpenGL}
+  {OpenGL shutdown}
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle, DC);
   DeleteDC(DC);
 
-  {удаление дополнительных форм}
+  {removing additional forms}
   frmOptions.Destroy;
 
-  {завершение работы модуля}
+  {module shutdown}
   SendMessage(CallerForm, WM_USER, 0, 0);
   Destroy;
 end;
@@ -191,16 +191,16 @@ procedure TfrmLibMain.FormShow(Sender: TObject);
 begin
   IsRun := False;
 
-  {настройка расположения окон}
+  {window layout setup}
   SetDefaultWindowsPosition;
 
-  {инициализация OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
   wglMakeCurrent(DC, HRC);
 
-  {настройка OpenGL}
+  {OpenGL setup}
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
@@ -219,7 +219,7 @@ end;
 
 procedure TfrmLibMain.RenderTimerTimer(Sender: TObject);
 var
-  lp: Extended;{длина пластин}
+  lp: Extended;{plate length}
   i: Integer;
 begin
   wglMakeCurrent(DC, HRC);
@@ -277,7 +277,7 @@ begin
 end;
 
 procedure TfrmLibMain.Calc;
-{вычисления}
+{calculations}
 const
   em = -1.7588E11;
 var

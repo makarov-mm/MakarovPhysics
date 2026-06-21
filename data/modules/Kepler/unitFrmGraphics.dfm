@@ -2,7 +2,7 @@ object frmGraphics: TfrmGraphics
   Left = 277
   Top = 156
   BorderStyle = bsSizeToolWin
-  Caption = #1043#1088#1072#1092#1080#1082#1080
+  Caption = 'Graphs'
   ClientHeight = 436
   ClientWidth = 678
   Color = clBtnFace
@@ -115,43 +115,37 @@ object frmGraphics: TfrmGraphics
     00078000000380000001800000078000001F8000003F8000003F8000003F8000
     003F8000003F8000003F8000003F8000003F8000003FC000003FE000003FF000
     003FF800007FFC0001FFFE0007FFFF001FFFFF807FFFFFC1FFFFFFE7FFFF}
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object chartPhase1: TChart
     Left = 16
     Top = 32
     Width = 273
     Height = 249
-    BackWall.Brush.Color = clWhite
     BackWall.Brush.Style = bsClear
+    Legend.Visible = False
     Title.Text.Strings = (
       #1060#1072#1079#1086#1074#1072#1103' '#1090#1088#1072#1077#1082#1090#1086#1088#1080#1103' (X, Vx)')
     BottomAxis.DateTimeFormat = '#'#160'##0,###'
-    Legend.Visible = False
     View3D = False
     BevelOuter = bvNone
     Enabled = False
     TabOrder = 0
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
     object Series1: TPointSeries
-      Marks.ArrowLength = 0
-      Marks.Visible = False
+      HoverElement = [heCurrent]
       SeriesColor = clRed
+      ClickableLine = False
       Pointer.HorizSize = 2
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
       Pointer.VertSize = 2
-      Pointer.Visible = True
-      XValues.DateTime = False
       XValues.Name = 'X'
-      XValues.Multiplier = 1.000000000000000000
       XValues.Order = loAscending
-      YValues.DateTime = False
       YValues.Name = 'Y'
-      YValues.Multiplier = 1.000000000000000000
       YValues.Order = loNone
     end
   end
@@ -160,32 +154,28 @@ object frmGraphics: TfrmGraphics
     Top = 56
     Width = 273
     Height = 249
-    BackWall.Brush.Color = clWhite
     BackWall.Brush.Style = bsClear
+    Legend.Visible = False
     Title.Text.Strings = (
       #1060#1072#1079#1086#1074#1072#1103' '#1090#1088#1072#1077#1082#1090#1086#1088#1080#1103' (Y, Vy)')
     BottomAxis.DateTimeFormat = '#'#160'##0,###'
-    Legend.Visible = False
     View3D = False
     BevelOuter = bvNone
     Enabled = False
     TabOrder = 1
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
     object PointSeries1: TPointSeries
-      Marks.ArrowLength = 0
-      Marks.Visible = False
+      HoverElement = [heCurrent]
       SeriesColor = clRed
+      ClickableLine = False
       Pointer.HorizSize = 2
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
       Pointer.VertSize = 2
-      Pointer.Visible = True
-      XValues.DateTime = False
       XValues.Name = 'X'
-      XValues.Multiplier = 1.000000000000000000
       XValues.Order = loAscending
-      YValues.DateTime = False
       YValues.Name = 'Y'
-      YValues.Multiplier = 1.000000000000000000
       YValues.Order = loNone
     end
   end

@@ -2,7 +2,7 @@ object frmGraph: TfrmGraph
   Left = 255
   Top = 158
   BorderStyle = bsSizeToolWin
-  Caption = #1043#1088#1072#1092#1080#1082
+  Caption = 'Graph'
   ClientHeight = 444
   ClientWidth = 686
   Color = clBtnFace

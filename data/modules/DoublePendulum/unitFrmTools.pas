@@ -3,8 +3,9 @@ unit unitFrmTools;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls, ExtCtrls, Menus, unitMakarovTools;
+  Windows, Messages, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, StdCtrls, ExtCtrls, Menus, unitMakarovTools, System.SysUtils,
+  Vcl.Mask;
 
 type
   TfrmTools = class(TForm)
@@ -77,7 +78,7 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmTools.tbMassSizeChange(Sender: TObject);
@@ -97,10 +98,10 @@ end;
 
 procedure TfrmTools.N2Click(Sender: TObject);
 begin
-  About('Двойной маятник',
-    'Дата создания: 3 декабря 2004 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Double pendulum',
+    'Created: December 3, 2004',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 
@@ -138,8 +139,8 @@ begin
         r := True;
     except
       n := True;
-      MessageBox(Handle,'Введены неправильные значения',
-                        'Ошибка',MB_OK);
+      MessageBox(Handle,'Invalid values entered',
+                        'Error',MB_OK);
     end;
   end else
     r := True;
@@ -174,8 +175,8 @@ begin
       frmLibMain.IsPaused := False;
   end else
     if not n then
-      MessageBox(Handle,'Введены неправильные значения',
-                        'Ошибка',MB_OK);
+      MessageBox(Handle,'Invalid values entered',
+                        'Error',MB_OK);
 end;
 
 procedure TfrmTools.btnPauseClick(Sender: TObject);

@@ -1,8 +1,5 @@
 {
-ѕрограмма: ѕолЄт ракеты
-–азработчик: ћакаров ћ.ћ.
-ƒата создани€: Ќо€брь 2004 года
-—реда разработки: Delphi 7
+Program: Rocket flight\nAuthor: M.M. Makarov\nCreated: November 2004\nIDE: Delphi 7
 }
 unit unitFrmLibMain;
 
@@ -35,14 +32,14 @@ type
       Y: Integer);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    DC: HDC;{контекст устройства}
-    HRC: HGLRC;{контекст рендеринга OpenGL}
+    DC: HDC;{device context}
+    HRC: HGLRC;{OpenGL rendering context}
     ps: TPaintStruct;
     nPixelFormat: Integer;
     pfd: TPixelFormatDescriptor;
-    preX, preY: Integer;{предыдущее положение курсора мыши}
-    MouseL: Boolean;{состо€ние кнопок мыши}
-    rotation: Single;{вращение системы координат}
+    preX, preY: Integer;{previous mouse cursor position}
+    MouseL: Boolean;{mouse button state}
+    rotation: Single;{coordinate system rotation}
     Texture: Array[1..8, 0..127,0..127,0..3] of GLubyte;
     CallerForm: THandle;
     procedure SetDefaultWindowsPosition;
@@ -57,11 +54,11 @@ type
     procedure DrawHouse(x, z, t1, t2: Integer);
     procedure DrawHouses;
   public
-    InfoThread: TMyThread;{поток дл€ вывода информации о ракете}
-    RotationSpeed: Single;{скорость вращени€}
-    RocketBase: TRocketBase;{подставка дл€ ракеты}
-    Rocket: TRocket;{ракета}
-    Paused: Boolean;{пауза}
+    InfoThread: TMyThread;{thread for outputting rocket information}
+    RotationSpeed: Single;{rotation speed}
+    RocketBase: TRocketBase;{rocket stand}
+    Rocket: TRocket;{rocket}
+    Paused: Boolean;{pause}
   end;
 
 procedure InitLibrary(App,CallForm:THandle);
@@ -93,7 +90,7 @@ procedure TfrmLibMain.DrawQuadrangle(x1, y1, z1,
                                      x2, y2, z2,
                                      x3, y3, z3,
                                      x4, y4, z4: Single);
-{нарисовать полигон и просчитать дл€ него нормали}
+{draw a polygon and compute its normals}
 var
   wrki, vx1, vy1, vz1, vx2, vy2, vz2:Single;
 begin
@@ -123,7 +120,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawBox(x, y, z, xWidth, yWidth, zWidth: Single);
-{нарисовать пр€моугольный параллелепипед}
+{draw a rectangular parallelepiped}
 begin
   glBegin(GL_QUADS);
 
@@ -161,7 +158,7 @@ begin
 end;
 
 procedure TfrmLibMain.LoadTextures;
-{загрузка текстур}
+{texture loading}
 var
   i, j: Integer;
 begin
@@ -316,7 +313,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawHouse(x,z,t1,t2:Integer);
-{нарисовать дом}
+{draw a house}
 const
   housewidth = 20;
   househeight = 30;
@@ -339,7 +336,7 @@ begin
   glDeleteLists(1, 1);
   glNewList(1, GL_COMPILE);
 
-  {рисуем дома}
+  {draw houses}
   DrawHouse(20, 60, 2, 4);
   DrawHouse(20, 100, 2, 4);
   DrawHouse(70, 80, 2, 4);
@@ -361,10 +358,10 @@ begin
   DrawHouse(-70, 130, 3, 4);
   DrawHouse(-100, 130, 3, 4);
 
-  {платформа, на которой стоит ракета}
+  {platform the rocket stands on}
   DrawBox(-15, -19, -15, 30, 20, 30);
 
-  {рисуем дороги}
+  {draw roads}
   glBindTexture(GL_TEXTURE_2D, 6);
   glBegin(GL_QUADS);
   for i := 0 to 30 do
@@ -397,9 +394,9 @@ begin
 end;
 
 procedure TfrmLibMain.Render;
-{рендеринг}
+{rendering}
 const
-  fieldkoef = 100;{коэффициент раст€жени€ текстур на поле}
+  fieldkoef = 100;{texture stretch factor on the field}
 var
   i, j: Integer;
 begin
@@ -411,7 +408,7 @@ begin
   rotation := rotation + RotationSpeed;
   if rotation > 360 then rotation := 0;
 
-  {рисуем поле}
+  {draw the field}
   glBindTexture(GL_TEXTURE_2D, 1);
   glBegin(GL_QUADS);
   for i := -5 to 5 do
@@ -422,14 +419,14 @@ begin
                      i * fieldkoef, 0, j * fieldkoef);
   glEnd;
 
-  {рисуем различные конструкции}
+  {draw various structures}
   glCallList(1);
 
-  {рисуем подставку дл€ ракеты}
+  {draw the rocket stand}
   glBindTexture(GL_TEXTURE_2D, 8);
   RocketBase.Draw;
 
-  {рисуем ракету}
+  {draw the rocket}
   glBindTexture(GL_TEXTURE_2D, 7);
   if (RocketBase.Angle >= 20) and (not Rocket.IsRun) and (not Paused) then
     Rocket.CanStart(StrToFloat(frmOptions.txtMass.Text),
@@ -443,8 +440,8 @@ begin
   Rocket.Draw(not Paused);
 end;
 
-procedure TimerTick;
-{событие OnTimer}
+procedure TimerTick(AHwnd: HWND; AMsg: UINT; AEvent: UINT_PTR; ATime: DWORD); stdcall;
+{OnTimer event}
 begin
   BeginPaint(frmLibMain.Handle, frmLibMain.ps);
   wglMakeCurrent(frmLibMain.DC, frmLibMain.HRC);
@@ -457,7 +454,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDCPixelFormat;
-{установка формата пиксел€}
+{set the pixel format}
 begin
   FillChar(pfd, SizeOf(pfd), 0);
   pfd.dwFlags := PFD_SUPPORT_OPENGL or
@@ -468,7 +465,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDefaultWindowsPosition;
-{настройка расположени€ окон}
+{window layout setup}
 const
   opwidth = 209;
   vdiv = 0.7;
@@ -511,21 +508,21 @@ end;
 
 procedure TfrmLibMain.FormShow(Sender: TObject);
 begin
-  {установка стандартного расположени€ окон}
+  {set the default window layout}
   SetDefaultWindowsPosition;
 
-  {запуск дополнительного потока дл€ вывода информации в frmResult.RichEdit1}
-  InfoThread.Resume;
+  {start the extra thread that outputs information to frmResult.RichEdit1}
+  InfoThread.Start;
 end;
 
 procedure TfrmLibMain.FormCreate(Sender: TObject);
 const
-  FogStart = 10;{начало тумана}
-  FogEnd = 500;{конец тумана}
+  FogStart = 10;{fog start}
+  FogEnd = 500;{fog end}
 var
-  fogColor: Array[0..3] of GLFloat;{÷вет тумана}
+  fogColor: Array[0..3] of GLFloat;{Fog color}
 begin
-  {установка переменных в начальные значени€}
+  {set variables to initial values}
   preX := 0;
   preY := 0;
   MouseL := False;
@@ -533,11 +530,11 @@ begin
   RotationSpeed := 0.3;
   Paused := False;
 
-  {создание объектов –акета и –акетна€ Ѕаза}
+  {create Rocket and Rocket Base objects}
   RocketBase := TRocketBase.Create;
   Rocket := TRocket.Create;
 
-  {инициализаци€ OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
@@ -552,7 +549,7 @@ begin
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-  {настройка тумана}
+  {fog setup}
   fogColor[0] := 0;
   fogColor[1] := 0;
   fogColor[2] := 0;
@@ -563,24 +560,24 @@ begin
   glFogf(GL_FOG_END, FogEnd);
   glFogfv(GL_FOG_COLOR, @fogColor);
 
-  {загрузка текстур}
+  {texture loading}
   LoadTextures;
 
-  {создание дисплейного списка дл€ различных домов, дорог и т.д.}
+  {create a display list for various houses, roads, etc.}
   DrawHouses;
 
-  {дополнительный поток}
+  {extra thread}
   InfoThread:=TMyThread.Create(true);
 
   //InfoThread.Priority:=tpIdle;
   InfoThread.MyRocket:=Rocket;
 
-  {установка таймера рендеринга}
+  {set the rendering timer}
   SetTimer(Handle, 1, 40, @TimerTick);
 end;
 
 procedure TfrmLibMain.FormResize(Sender: TObject);
-{корректировка вывода OpenGL при изменении размеров окна}
+{adjust OpenGL output when the window is resized}
 begin
   glViewport(0, 0, ClientWidth, ClientHeight);
   glMatrixMode(GL_PROJECTION);
@@ -612,9 +609,9 @@ end;
 procedure TfrmLibMain.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 const
-  sens = 0.1;{чувствительность мыши}
+  sens = 0.1;{mouse sensitivity}
 begin
-  {расчЄт вращени€ системы координат при движении мыши с нажатой левой кнопкой}
+  {rotate the coordinate system when the mouse moves with the left button pressed}
   if MouseL then
   begin
     rotation := rotation + (X - preX) * sens;
@@ -634,7 +631,7 @@ begin
   frmResults.Free;
   frmGraphics.Free;
 
-  {удаление классов}
+  {removing classes}
   InfoThread.Destroy;
   InfoThread := nil;
   Rocket.Destroy;
@@ -642,10 +639,10 @@ begin
   RocketBase.Destroy;
   RocketBase := nil;
 
-  {удаление таймера}
+  {removing timer}
   KillTimer(Handle, 1);
 
-  {завершение работы с OpenGL}
+  {OpenGL shutdown}
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle, DC);

@@ -17,15 +17,15 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormResize(Sender: TObject);
   private
-    CallerForm: THandle;{вызывающая форма}
-    DC: HDC;{контекст устройства}
-    HRC: HGLRC;{контекст рендеринга OpenGL}
+    CallerForm: THandle;{calling form}
+    DC: HDC;{device context}
+    HRC: HGLRC;{OpenGL rendering context}
     ps: TPaintStruct;
     pfd: TPixelFormatDescriptor;
     nPixelFormat: Integer;
-    RenderTimerID: Integer;{идентификатор таймера рендеринга}
-    QuadObj: GLUquadricObj;{quadric-объект}
-    graphdelay: Integer;{задержка вывода графиков}
+    RenderTimerID: Integer;{rendering timer identifier}
+    QuadObj: GLUquadricObj;{quadric object}
+    graphdelay: Integer;{graph output delay}
     procedure UpdateArrays;
     procedure DrawGraphics;
     procedure DrawTraectory;
@@ -34,13 +34,13 @@ type
     procedure SetDefaultWindowsPosition;
     procedure Calculate;
   public
-    ArrX, ArrY, ArrSX, ArrSY: Array[1..segsCount] of Extended;{массивы}
-    PlanetMass,{масса планеты}
-    SatelliteMass,{масса объекта}
-    PlanetRadius,{радиус планеты}
-    cX, cY,{координаты объекта}
-    speedX, speedY,{скорость объекта}
-    accelX, accelY: Extended;{ускорение объекта}
+    ArrX, ArrY, ArrSX, ArrSY: Array[1..segsCount] of Extended;{arrays}
+    PlanetMass,{planet mass}
+    SatelliteMass,{object mass}
+    PlanetRadius,{planet radius}
+    cX, cY,{object coordinates}
+    speedX, speedY,{object speed}
+    accelX, accelY: Extended;{object acceleration}
     IsRun: Boolean;
   end;
 
@@ -56,13 +56,13 @@ uses unitFrmOptions, unitFrmResult, unitFrmGraphics;
 {$R *.dfm}
 
 procedure InitLibrary(App, CallForm: THandle);
-{Инициализация библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
   frmLibMain.CallerForm := CallForm;
 
-  {создание дополнительных окон}
+  {create additional windows}
   frmOptions := TfrmOptions.Create(Application);
   frmResults := TfrmResults.Create(Application);
   frmGraphics := TfrmGraphics.Create(Application);
@@ -102,7 +102,7 @@ begin
 end;
 
 procedure TfrmLibMain.Calculate;
-{вычисления}
+{calculations}
 const
   gamma = 6.6720 * 0.00000000001;
   dt = 1 / 250000;
@@ -177,7 +177,7 @@ begin
 end;
 
 procedure TfrmLibMain.Render;
-{рендеринг}
+{rendering}
 begin
   wglMakeCurrent(DC, HRC);
   BeginPaint(Handle, ps);
@@ -205,10 +205,10 @@ begin
     DrawGraphics;
     graphdelay := 0;
     frmResults.txtResult.Text :=
-      'X: ' + FloatToStr(cX) + ' м' + #13#10 +
-      'Y: ' + FloatToStr(cY) + ' м' + #13#10 +
-      'Скорость X: ' + FloatToStr(speedX) + ' м/с' + #13#10 +
-      'Скорость Y: ' + FloatToStr(speedY) + ' м/с';
+      'X: ' + FloatToStr(cX) + ' m' + #13#10 +
+      'Y: ' + FloatToStr(cY) + ' m' + #13#10 +
+      'Speed X: ' + FloatToStr(speedX) + ' m/s' + #13#10 +
+      'Speed Y: ' + FloatToStr(speedY) + ' m/s';
   end;
 
   EndPaint(Handle, ps);
@@ -233,29 +233,29 @@ end;
 
 procedure TfrmLibMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  {уничтожение таймеров}
+  {destroying timers}
   KillTimer(Handle, RenderTimerID);
 
-  {удаление quadric-объекта}
+  {removing a quadric object}
   gluDeleteQuadric(QuadObj);
 
-  {завершение работы с OpenGL}
+  {OpenGL shutdown}
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle, DC);
   DeleteDC(DC);
 
-  {удаление дополнительных форм}
+  {removing additional forms}
   frmOptions.Destroy;
   frmResults.Destroy;
   frmGraphics.Destroy;
 
-  {завершение работы модуля}
+  {module shutdown}
   SendMessage(CallerForm, WM_USER, 0, 0);
   Destroy;
 end;
 
-procedure RenderTimerTick;
+procedure RenderTimerTick(AHwnd: HWND; AMsg: UINT; AEvent: UINT_PTR; ATime: DWORD); stdcall;
 begin
   frmLibMain.Render;
 end;
@@ -270,13 +270,13 @@ begin
   speedY := 6500;
   SatelliteMass := 1;
 
-  {инициализация OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
   wglMakeCurrent(DC, HRC);
 
-  {настройка OpenGL}
+  {OpenGL setup}
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
@@ -284,13 +284,13 @@ begin
   glEnable(GL_POLYGON_SMOOTH);
   glClearColor(0, 0, 0, 1);
 
-  {создание quadric-объекта}
+  {creating a quadric object}
   quadObj := gluNewQuadric;
   gluQuadricDrawStyle(quadObj, GLU_FILL);
   gluQuadricOrientation(quadObj, GLU_OUTSIDE);
 
   SetDefaultWindowsPosition;
-  {инициализация таймеров}
+  {timer initialization}
   Randomize;
   RenderTimerID := Random(10000);
   SetTimer(Handle, RenderTimerID, 40, @RenderTimerTick);

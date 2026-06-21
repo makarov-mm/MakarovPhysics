@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2006.11.19 20:47:07.004.pas,C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\Unit1.pas=C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\unitFrmMain.pas</Transaction>
-    <Transaction>2006.11.19 20:47:07.016.dfm,C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\Unit1.dfm=C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\unitFrmMain.dfm</Transaction>
-    <Transaction>2006.11.19 20:47:54.450.pas,C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\Unit2.pas=C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\unitFrmOptions.pas</Transaction>
-    <Transaction>2006.11.19 20:47:54.450.dfm,C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\Unit2.dfm=C:\Users\NightmareZ\Desktop\TO_BACKUP\MY_SOFT\физика\sources\data\modules\Multipole\unitFrmOptions.dfm</Transaction>
-  </Transactions>
-</BorlandProject>

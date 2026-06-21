@@ -14,14 +14,8 @@ type
     lblDate: TLabel;
     lblDateUpdate: TLabel;
     lblVersion: TLabel;
-    lblLink: TLabel;
     btnClose: TSpeedButton;
-    procedure lblLinkClick(Sender: TObject);
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-    procedure lblLinkMouseMove(Sender: TObject; Shift: TShiftState; X,
-      Y: Integer);
-    procedure lblLinkMouseLeave(Sender: TObject);
-    procedure lblLinkMouseEnter(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
   private
     { Private declarations }
@@ -44,36 +38,7 @@ end;
 procedure TfrmAbout.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
-  lblLink.Font.Color := clBlue;
-  lblLink.Font.Style := [fsBold, fsUnderline];
   Cursor := crDefault;
-end;
-
-procedure TfrmAbout.lblLinkClick(Sender: TObject);
-begin
-  WinExec('explorer.exe http://systemhalt.org', SW_SHOWMAXIMIZED);
-end;
-
-procedure TfrmAbout.lblLinkMouseEnter(Sender: TObject);
-begin
-  lblLink.Font.Color := clRed;
-  lblLink.Font.Style := [fsBold];
-  Cursor := crHandPoint;
-end;
-
-procedure TfrmAbout.lblLinkMouseLeave(Sender: TObject);
-begin
-  lblLink.Font.Color := clBlue;
-  lblLink.Font.Style := [fsBold, fsUnderline];
-  Cursor := crDefault;
-end;
-
-procedure TfrmAbout.lblLinkMouseMove(Sender: TObject; Shift: TShiftState; X,
-  Y: Integer);
-begin
-  lblLink.Font.Color := clRed;
-  lblLink.Font.Style := [fsBold];
-  Cursor := crHandPoint;
 end;
 
 end.

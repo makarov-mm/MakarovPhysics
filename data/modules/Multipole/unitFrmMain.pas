@@ -15,23 +15,23 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    CallerForm: THandle;{вызывающая форма}
+    CallerForm: THandle;{calling form}
     pfd: TPixelFormatDescriptor;
     nPixelFormat: Integer;
     DC: HDC;
     HRC: HGLRC;
     ps: TPaintStruct;
-    RenderTimerID: Integer;{ID таймера рендеринга}
+    RenderTimerID: Integer;{rendering timer ID}
     quadObj: GLUQuadricObj;
     procedure Render;
     procedure SetDCPixelFormat;
     procedure SetDefaultWindowsPosition;
   public
-    QPosition: array of record {массив зарядов}
-                x, y: Single;{позиция}
-                q: Single;{заряд}
+    QPosition: array of record {array of charges}
+                x, y: Single;{position}
+                q: Single;{charge}
               end;
-    NumbOfQ: Integer;{количество зарядов}
+    NumbOfQ: Integer;{number of charges}
     Field: IFields;
     procedure Calc(Sender:TObject);
   end;
@@ -46,7 +46,7 @@ implementation
 {$R *.dfm}
 
 procedure TfrmLibMain.Calc(Sender:TObject);
-{вычисления}
+{calculations}
 var
   i: Integer;
   q: Single;
@@ -56,7 +56,7 @@ begin
 
   Field := nil;
   
-  {устанавливаем размер массива зарядов}
+  {set the size of the charges array}
   NumbOfQ := frmOptions.tbQCount.Position;
   SetLength(QPosition, NumbOfQ);
 
@@ -64,7 +64,7 @@ begin
   frmOptions.pbCalc.Max := NumbOfQ * 2;
   Application.ProcessMessages;
 
-  {размещаем заряды}
+  {place the charges}
   q := 1;
   for i := 0 to NumbOfQ - 1 do
   begin
@@ -80,7 +80,7 @@ begin
     Application.ProcessMessages;
   end;
 
-  {рассчитываем поле}
+  {compute the field}
   if frmOptions.cbMakeLines.Checked then
   begin
     Field := TFields.Create(frmOptions.tbLinesPerQ.Position);
@@ -98,7 +98,7 @@ begin
     Field.Calc;
   end;
 
-  {прорисовывам в дисплейный список}
+  {render into the display list}
   glNewList(1, GL_COMPILE);
   Field.Render;
   glEndList;
@@ -126,7 +126,7 @@ begin
 end;
 
 procedure InitLibrary(App,CallForm:THandle);
-{Инициализация библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
@@ -137,7 +137,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDCPixelFormat;
-{настройка формата пикселя}
+{pixel format setup}
 begin
   FillChar(pfd,SizeOf(pfd),0);
   pfd.dwFlags := PFD_SUPPORT_OPENGL or
@@ -148,7 +148,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDefaultWindowsPosition;
-{настройка стандартного расположения окон}
+{default window layout setup}
 const
   dw = 209;
 begin
@@ -170,7 +170,7 @@ begin
 end;
 
 procedure TfrmLibMain.Render;
-{рендеринг}
+{rendering}
 begin
   Application.ProcessMessages;
   wglMakeCurrent(DC, HRC);
@@ -190,7 +190,7 @@ begin
   Application.ProcessMessages;
 end;
 
-procedure RenderTimerTick;
+procedure RenderTimerTick(AHwnd: HWND; AMsg: UINT; AEvent: UINT_PTR; ATime: DWORD); stdcall;
 begin
   frmLibMain.Render;
 end;
@@ -203,19 +203,19 @@ end;
 
 procedure TfrmLibMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  {удаление таймера рендеринга}
+  {removing rendering timer}
   KillTimer(Handle, RenderTimerID);
 
-  {удаление quadric-объекта}
+  {removing a quadric object}
   gluDeleteQuadric(quadObj);
 
-  {завершение работы с OpenGL}
+  {OpenGL shutdown}
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle, DC);
   DeleteDC(DC);
 
-  {завершение работы модуля}
+  {module shutdown}
   frmOptions.Destroy;
   SendMessage(CallerForm, WM_USER, 0, 0);
   Destroy;
@@ -223,13 +223,13 @@ end;
 
 procedure TfrmLibMain.FormShow(Sender: TObject);
 begin
-  {инициализация OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
   wglMakeCurrent(DC, HRC);
 
-  {настройка OpenGL}
+  {OpenGL setup}
   glClearColor(0, 0, 0, 1);
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_POINT_SMOOTH);
@@ -237,15 +237,15 @@ begin
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
 
-  {создание quadric-объекта}
+  {creating a quadric object}
   quadObj := gluNewQuadric;
   gluQuadricDrawStyle(quadObj, GLU_FILL);
   gluQuadricOrientation(quadObj, GLU_OUTSIDE);
 
-  {настройка расположения окон}
+  {window layout setup}
   SetDefaultWindowsPosition;
 
-  {инициализация таймера рендеринга}
+  {rendering timer initialization}
   Randomize;
   RenderTimerID := Random(1000) + 500;
   SetTimer(Handle, RenderTimerID, 40, @RenderTimerTick);

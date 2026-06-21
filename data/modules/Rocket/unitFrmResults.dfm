@@ -2,7 +2,7 @@ object frmResults: TfrmResults
   Left = 219
   Top = 186
   BorderStyle = bsToolWindow
-  Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090#1099
+  Caption = 'Results'
   ClientHeight = 353
   ClientWidth = 545
   Color = clBtnFace

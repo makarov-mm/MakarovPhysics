@@ -1,0 +1,58 @@
+# ---- Delphi / RAD Studio build output ----
+*.dcu
+*.exe
+*.dll
+*.bpl
+*.dcp
+*.so
+*.dylib
+*.map
+*.drc
+*.rsm
+*.tds
+*.dbg
+
+# Build / history folders
+__history/
+__recovery/
+dcu/
+bin/
+lib/
+Win32/
+Win64/
+Debug/
+Release/
+Android/
+Android64/
+iOSDevice64/
+iOSSimulator/
+OSX64/
+Linux64/
+
+# IDE-local / cache (regenerated)
+*.local
+*.identcache
+*.tvsconfig
+*.otares
+*.skincfg
+*.stat
+*.~*
+
+# ---- Legacy Delphi 2006/7 project files (superseded by .dproj) ----
+*.bdsproj
+*.dof
+*.ddp
+
+# ---- Delphi compiler configs (per-project, regenerated) ----
+# Ignore all *.cfg but keep the two runtime data configs the app reads at start.
+*.cfg
+!data/engine/modules.cfg
+!data/engine/maintex.cfg
+
+# ---- Windows / OS noise ----
+Thumbs.db
+Desktop.ini
+*.stackdump
+
+# Generated texture packs (produced by build.bat / bmp2dat)
+data/textures/*.dat

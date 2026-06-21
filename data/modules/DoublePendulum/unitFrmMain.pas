@@ -7,21 +7,21 @@ uses
   Dialogs, OpenGL, Math;
 
 type
-  vector=record{вектор}
+  vector=record{vector}
     x,y:Extended;
   end;
 
-  Pendulum=record{маятник}
-    Len:Extended;{длина нити}
-    mass:Extended;{масса груза}
-    Position:vector;{координаты}
-    FixedPos:vector;{координаты точки крепления}
-    Angle:Extended;{угол отклонения}
-    Speed:Extended;{скорость}
-    Acceleration:Extended;{ускорение}
-    preAngle:Extended;{предыдущий угол}
-    preSpeed:Extended;{предыдущая скорость}
-    preAcceleration:Extended;{предыдущее ускорение}
+  Pendulum=record{pendulum}
+    Len:Extended;{thread length}
+    mass:Extended;{weight mass}
+    Position:vector;{coordinates}
+    FixedPos:vector;{attachment point coordinates}
+    Angle:Extended;{deflection angle}
+    Speed:Extended;{speed}
+    Acceleration:Extended;{acceleration}
+    preAngle:Extended;{previous angle}
+    preSpeed:Extended;{previous speed}
+    preAcceleration:Extended;{previous acceleration}
   end;
 
   TfrmLibMain = class(TForm)
@@ -31,17 +31,17 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormResize(Sender: TObject);
   private
-    CallerForm: THandle;{вызывающая форма}
-    DC: HDC;{контекст устройства}
-    HRC: HGLRC;{контекст рендеринга OpenGL}
+    CallerForm: THandle;{calling form}
+    DC: HDC;{device context}
+    HRC: HGLRC;{OpenGL rendering context}
     nPixelFormat: Integer;
-    pfd: TPixelFormatDescriptor;{формат пикселя}
+    pfd: TPixelFormatDescriptor;{pixel format}
     ps: TPaintStruct;
-    quadObj1, quadObj2: GLUquadricObj;{quadric-объекты}
+    quadObj1, quadObj2: GLUquadricObj;{quadric objects}
     ArrOfAngle,
     ArrOfSpeed,
     ArrOfAccel: Array[1..2,1..250] of Extended;
-    infostep: Integer;{счётчик для вывода инфы}
+    infostep: Integer;{info output counter}
     procedure SetStandartWindowsPosition;
     procedure SetDCPixelFormat;
     procedure Render;
@@ -53,7 +53,7 @@ type
     procedure DrawPhaseTraectory;
     procedure UpdateArrays;
   public
-    Pendulums: Array[1..2] of Pendulum;{маятники}
+    Pendulums: Array[1..2] of Pendulum;{pendulums}
     IsRun,IsPaused: Boolean;
     procedure ClearArrays;
   end;
@@ -70,12 +70,12 @@ uses unitFrmTools, unitFrmResults, unitFrmGraphics, unitFormPhaseTraectory;
 {$R *.dfm}
 
 procedure InitLibrary(App,CallForm:THandle);
-{Инициализация библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
   frmLibMain.CallerForm := CallForm;
-  {создание дополнительных форм}
+  {create additional forms}
   frmTools := TfrmTools.Create(Application);
   frmResults := TfrmResults.Create(Application);
   frmGraphics := TfrmGraphics.Create(Application);
@@ -84,7 +84,7 @@ begin
 end;
 
 procedure TfrmLibMain.UpdateArrays;
-{обновление массивов}
+{array update}
 var
   i, j: Integer;
 begin
@@ -103,7 +103,7 @@ begin
 end;
 
 procedure TfrmLibMain.ClearArrays;
-{очистка массивов}
+{clear arrays}
 var
   i, j: Integer;
 begin
@@ -117,7 +117,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawGraphic;
-{прорисовка графиков}
+{graphs rendering}
 var
   i:Integer;
 begin
@@ -125,8 +125,8 @@ begin
   frmGraphics.chartPendulum2.Series[0].Clear;
   case frmGraphics.tabs.TabIndex of
     0: begin
-         frmGraphics.chartPendulum1.Title.Text.Text:='Угол (Маятник 1) [град]';
-         frmGraphics.chartPendulum2.Title.Text.Text:='Угол (Маятник 2) [град]';
+         frmGraphics.chartPendulum1.Title.Text.Text:='Angle (Pendulum 1) [deg]';
+         frmGraphics.chartPendulum2.Title.Text.Text:='Angle (Pendulum 2) [deg]';
          for i:=1 to 250 do
          begin
            frmGraphics.chartPendulum1.Series[0].Add(ArrOfAngle[1,i]);
@@ -134,8 +134,8 @@ begin
          end;
        end;
     1: begin
-         frmGraphics.chartPendulum1.Title.Text.Text:='Угловая скорость (Маятник 1) [град/с]';
-         frmGraphics.chartPendulum2.Title.Text.Text:='Угловая скорость (Маятник 2) [град/с]';
+         frmGraphics.chartPendulum1.Title.Text.Text:='Angular speed (Pendulum 1) [deg/s]';
+         frmGraphics.chartPendulum2.Title.Text.Text:='Angular speed (Pendulum 2) [deg/s]';
          for i:=1 to 250 do
          begin
            frmGraphics.chartPendulum1.Series[0].Add(ArrOfSpeed[1,i]);
@@ -143,8 +143,8 @@ begin
          end;
        end;
     2: begin
-         frmGraphics.chartPendulum1.Title.Text.Text:='Угловое ускорение (Маятник 1) [град/с^2]';
-         frmGraphics.chartPendulum2.Title.Text.Text:='Угловое ускорение (Маятник 2) [град/с^2]';
+         frmGraphics.chartPendulum1.Title.Text.Text:='Angular acceleration (Pendulum 1) [deg/s^2]';
+         frmGraphics.chartPendulum2.Title.Text.Text:='Angular acceleration (Pendulum 2) [deg/s^2]';
          for i:=1 to 250 do
          begin
            frmGraphics.chartPendulum1.Series[0].Add(ArrOfAccel[1,i]);
@@ -155,7 +155,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawPhaseTraectory;
-{прорисовка фазовых траеторий}
+{phase trajectories rendering}
 var
   i: Integer;
 begin
@@ -229,7 +229,7 @@ begin
     end;
   end;
 
-  {обновление массивов}
+  {array update}
   UpdateArrays;
 end;
 
@@ -264,7 +264,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawGrid;
-{прорисовка сетки}
+{grid rendering}
 var
   i: Integer;
 begin
@@ -290,7 +290,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetStandartWindowsPosition;
-{настройка расположения окон}
+{window layout setup}
 const
   dw = 209;
   dh1 = 0.25;
@@ -342,7 +342,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDCPixelFormat;
-{настройка формата пикселя}
+{pixel format setup}
 begin
   FillChar(pfd,SizeOf(pfd), 0);
   pfd.dwFlags := PFD_SUPPORT_OPENGL or
@@ -360,32 +360,32 @@ end;
 
 procedure TfrmLibMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  {удаление таймера рендеринга}
+  {removing rendering timer}
   KillTimer(Handle, 456);
 
-  {удаление Quadric-объектов}
+  {removing Quadric objects}
   gluDeleteQuadric(quadObj1);
   gluDeleteQuadric(quadObj2);
 
-  {завершение работы с OpenGL}
+  {OpenGL shutdown}
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle,DC);
   DeleteDC(DC);
 
-  {удаление окон}
+  {removing windows}
   frmTools.Destroy;
   frmResults.Destroy;
   frmGraphics.Destroy;
   frmPhaseTraectory.Destroy;
 
-  {завершение работы модуля}
+  {module shutdown}
   SendMessage(CallerForm, WM_USER, 0, 0);
   Destroy;
 end;
 
 procedure TfrmLibMain.CalcPendulums;
-{расчёт координат из углов отклонения}
+{coordinate calculation from deflection angles}
 begin
   if IsRun and not IsPaused then Verlet;
   with Pendulums[1] do
@@ -404,8 +404,8 @@ end;
 
 procedure TfrmLibMain.Render;
 const
-  qw = 5;{смещение по оси Y}
-  infolimit = 5;{момент вывода инфы}
+  qw = 5;{displacement along the Y axis}
+  infolimit = 5;{info output moment}
 begin
   wglMakeCurrent(DC, HRC);
   BeginPaint(Handle, ps);
@@ -414,36 +414,36 @@ begin
   glLoadIdentity;
   glTranslatef(0, -3, -frmTools.tbDistance.Position);
 
-  {расчёт маятников}
+  {pendulum calculation}
   CalcPendulums;
 
-  {прорисовка графиков}
+  {graphs rendering}
   DrawGraphic;
 
-  {прорисовка фазовых траеторий}
+  {phase trajectories rendering}
   DrawPhaseTraectory;
 
-  {прорисовка сетки}
+  {grid rendering}
   if frmTools.cbGrid.Checked then
     DrawGrid;
 
-  {вывод информации}
+  {information output}
   inc(infostep);
   if infostep > infolimit then
   begin
     infostep := 0;
-    frmResults.txtResults.Text := 'Маятник 1' + #13#10 +
-      'Угол: ' + FloatToStr(Pendulums[1].Angle) + ' (град)' + #13#10 +
-      'Угловая скорость: ' + FloatToStr(Pendulums[1].Speed) + ' (град/с)' + #13#10+
-      'Угловое ускорение: ' + FloatToStr(Pendulums[1].Acceleration) + ' (град/с^2)'
+    frmResults.txtResults.Text := 'Pendulum 1' + #13#10 +
+      'Angle: ' + FloatToStr(Pendulums[1].Angle) + ' (deg)' + #13#10 +
+      'Angular speed: ' + FloatToStr(Pendulums[1].Speed) + ' (deg/s)' + #13#10+
+      'Angular acceleration: ' + FloatToStr(Pendulums[1].Acceleration) + ' (deg/s^2)'
       + #13#10#13#10 +
-      'Маятник 2' + #13#10 +
-      'Угол: ' + FloatToStr(Pendulums[2].Angle) + ' (град)' + #13#10 +
-      'Угловая скорость: ' + FloatToStr(Pendulums[2].Speed) + ' (град/с)' + #13#10 +
-      'Угловое ускорение: ' + FloatToStr(Pendulums[2].Acceleration) + ' (град/с^2)';
+      'Pendulum 2' + #13#10 +
+      'Angle: ' + FloatToStr(Pendulums[2].Angle) + ' (deg)' + #13#10 +
+      'Angular speed: ' + FloatToStr(Pendulums[2].Speed) + ' (deg/s)' + #13#10 +
+      'Angular acceleration: ' + FloatToStr(Pendulums[2].Acceleration) + ' (deg/s^2)';
   end;
 
-  {прорисовка нитей подвесов маятников}
+  {rendering of pendulum suspension threads}
   glColor3f(1, 1, 1);
   if frmTools.cbViewPend.Checked then
   begin
@@ -463,7 +463,7 @@ begin
     glEnable(GL_LIGHTING);
   end;
 
-  {прорисовка грузов}
+  {weights rendering}
   if frmTools.cbViewMass.Checked then
   begin
     glPushMatrix;
@@ -491,7 +491,7 @@ begin
   SwapBuffers(DC);
 end;
 
-procedure RenderTimerTick;
+procedure RenderTimerTick(AHwnd: HWND; AMsg: UINT; AEvent: UINT_PTR; ATime: DWORD); stdcall;
 begin
   frmLibMain.Render;
 end;
@@ -513,12 +513,12 @@ begin
     end;
   Pendulums[2].Angle := 75;
 
-  {инициализация OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
   wglMakeCurrent(DC,HRC);
-  {настройка OpenGL}
+  {OpenGL setup}
 
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_LIGHTING);
@@ -529,7 +529,7 @@ begin
   material[3] := 1;
   glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, @material);
 
-  {создание Quadric-объектов}
+  {creating Quadric objects}
   quadObj1:=gluNewQuadric;
   gluQuadricDrawStyle(quadObj1, GLU_FILL);
   gluQuadricOrientation(quadObj1, GLU_OUTSIDE);
@@ -537,10 +537,10 @@ begin
   gluQuadricDrawStyle(quadObj2, GLU_FILL);
   gluQuadricOrientation(quadObj2, GLU_OUTSIDE);
 
-  {настройка расположения окон}
+  {window layout setup}
   SetStandartWindowsPosition;
 
-  {инициализация таймера рендеринга}
+  {rendering timer initialization}
   SetTimer(Handle, 456, 40, @RenderTimerTick);
 end;
 

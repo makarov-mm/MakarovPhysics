@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2006.11.21 23:08:07.125.pas,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\Unit2.pas=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\unitFrmOptions.pas</Transaction>
-    <Transaction>2006.11.21 23:08:07.125.dfm,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\Unit2.dfm=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\unitFrmOptions.dfm</Transaction>
-    <Transaction>2006.11.21 23:13:27.906.pas,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\Unit1.pas=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\unitFrmLibMain.pas</Transaction>
-    <Transaction>2006.11.21 23:13:27.906.dfm,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\Unit1.dfm=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика\sources\data\modules\WaterWaves\unitFrmLibMain.dfm</Transaction>
-  </Transactions>
-</BorlandProject>

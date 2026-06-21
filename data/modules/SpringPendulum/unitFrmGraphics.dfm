@@ -2,7 +2,7 @@ object frmGraphics: TfrmGraphics
   Left = 192
   Top = 114
   BorderStyle = bsSizeToolWin
-  Caption = #1043#1088#1072#1092#1080#1082#1080
+  Caption = 'Graphs'
   ClientHeight = 528
   ClientWidth = 335
   Color = clBtnFace
@@ -115,46 +115,40 @@ object frmGraphics: TfrmGraphics
     00078000000380000001800000078000001F8000003F8000003F8000003F8000
     003F8000003F8000003F8000003F8000003F8000003FC000003FE000003FF000
     003FF800007FFC0001FFFE0007FFFF001FFFFF807FFFFFC1FFFFFFE7FFFF}
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnResize = FormResize
   DesignSize = (
     335
     528)
-  PixelsPerInch = 96
   TextHeight = 13
   object chartDX: TChart
     Left = 8
     Top = 8
     Width = 319
     Height = 169
-    BackWall.Brush.Color = clWhite
     BackWall.Brush.Style = bsClear
+    Legend.Visible = False
     Title.Text.Strings = (
       #1057#1084#1077#1097#1077#1085#1080#1077' ('#1084')')
     BottomAxis.Visible = False
-    Legend.Visible = False
     View3D = False
     BevelInner = bvRaised
     BevelOuter = bvLowered
     Enabled = False
     TabOrder = 0
     Anchors = [akLeft, akTop, akRight]
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
     object Series1: TLineSeries
-      Marks.ArrowLength = 8
-      Marks.Visible = False
+      HoverElement = [heCurrent]
       SeriesColor = clRed
+      Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
-      XValues.DateTime = False
       XValues.Name = 'X'
-      XValues.Multiplier = 1.000000000000000000
       XValues.Order = loAscending
-      YValues.DateTime = False
       YValues.Name = 'Y'
-      YValues.Multiplier = 1.000000000000000000
       YValues.Order = loNone
     end
   end
@@ -163,32 +157,28 @@ object frmGraphics: TfrmGraphics
     Top = 184
     Width = 319
     Height = 169
-    BackWall.Brush.Color = clWhite
     BackWall.Brush.Style = bsClear
+    Legend.Visible = False
     Title.Text.Strings = (
       #1057#1082#1086#1088#1086#1089#1090#1100' ('#1084'/'#1089')')
     BottomAxis.Visible = False
-    Legend.Visible = False
     View3D = False
     BevelInner = bvRaised
     BevelOuter = bvLowered
     Enabled = False
     TabOrder = 1
     Anchors = [akLeft, akTop, akRight]
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
     object LineSeries1: TLineSeries
-      Marks.ArrowLength = 8
-      Marks.Visible = False
+      HoverElement = [heCurrent]
       SeriesColor = clRed
+      Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
-      XValues.DateTime = False
       XValues.Name = 'X'
-      XValues.Multiplier = 1.000000000000000000
       XValues.Order = loAscending
-      YValues.DateTime = False
       YValues.Name = 'Y'
-      YValues.Multiplier = 1.000000000000000000
       YValues.Order = loNone
     end
   end
@@ -197,32 +187,28 @@ object frmGraphics: TfrmGraphics
     Top = 360
     Width = 319
     Height = 169
-    BackWall.Brush.Color = clWhite
     BackWall.Brush.Style = bsClear
+    Legend.Visible = False
     Title.Text.Strings = (
       #1059#1089#1082#1086#1088#1077#1085#1080#1077' ('#1084'/'#1089'^2)')
     BottomAxis.Visible = False
-    Legend.Visible = False
     View3D = False
     BevelInner = bvRaised
     BevelOuter = bvLowered
     Enabled = False
     TabOrder = 2
     Anchors = [akLeft, akTop, akRight]
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
     object LineSeries2: TLineSeries
-      Marks.ArrowLength = 8
-      Marks.Visible = False
+      HoverElement = [heCurrent]
       SeriesColor = clRed
+      Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
-      XValues.DateTime = False
       XValues.Name = 'X'
-      XValues.Multiplier = 1.000000000000000000
       XValues.Order = loAscending
-      YValues.DateTime = False
       YValues.Name = 'Y'
-      YValues.Multiplier = 1.000000000000000000
       YValues.Order = loNone
     end
   end

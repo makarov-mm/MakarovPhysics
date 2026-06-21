@@ -1,8 +1,5 @@
 {
-Программа: Математический маятник
-Разработчик: Макаров М.М.
-Дата создания: 25 ноября 2004
-Среда разработки: Delphi7
+Program: Mathematical pendulum\nAuthor: M.M. Makarov\nCreated: November 25, 2004\nIDE: Delphi 7
 }
 unit unitFrmOptions;
 
@@ -10,7 +7,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Menus;
+  Dialogs, StdCtrls, ExtCtrls, Menus, Vcl.Mask;
 
 type
   TfrmOptions = class(TForm)
@@ -68,7 +65,7 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmOptions.btnStartClick(Sender: TObject);
@@ -104,8 +101,8 @@ begin
     frmLibMain.IsRun := True;
     btnStop.Enabled := True;
   except
-    MessageBox(frmLibMain.Handle, 'Введены неправильные значения',
-      'Ошибка', MB_ICONERROR);
+    MessageBox(frmLibMain.Handle, 'Invalid values entered',
+      'Error', MB_ICONERROR);
   end;
 end;
 
@@ -144,10 +141,10 @@ end;
 
 procedure TfrmOptions.N5Click(Sender: TObject);
 begin
-  About('Математический маятник',
-    'Дата создания: 25 ноября 2004 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Mathematical pendulum',
+    'Created: November 25, 2004',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 

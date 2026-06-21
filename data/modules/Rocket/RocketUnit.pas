@@ -1,8 +1,5 @@
 {
-Программа: Полёт ракеты
-Разработчик: Макаров М.М.
-Дата создания: Ноябрь 2004 года
-Среда разработки: Delphi 7
+Program: Rocket flight\nAuthor: M.M. Makarov\nCreated: November 2004\nIDE: Delphi 7
 }
 unit RocketUnit;
 
@@ -15,23 +12,23 @@ type
   TRocket = class
   private
     QuadObj: Array[1..4] of GLUquadricObj;
-    H1,{Высота первой ступени}
-    H2,{Высота второй ступени}
-    mass,{масса ракеты без топлива}
-    reactSpeed: Extended;{скорость реактивной струи}
+    H1,{First stage height}
+    H2,{Second stage height}
+    mass,{rocket mass without fuel}
+    reactSpeed: Extended;{jet speed}
     SpeedDiagram: Array[1..500] of Single;
     HDiagram: Array[1..500] of Single;
     AccelDiagram: Array[1..500] of Single;
-    ParticleSystem1: TParticleSystem;{система частиц 1}
-    ParticleSystem2: TParticleSystem;{система частиц 2}
+    ParticleSystem1: TParticleSystem;{particle system 1}
+    ParticleSystem2: TParticleSystem;{particle system 2}
     tt: Integer;
   public
-    Speed,{скорость}
-    Acceleration,{ускорение}
-    H: Extended;{Высота}
+    Speed,{speed}
+    Acceleration,{acceleration}
+    H: Extended;{Height}
     IsRun: Boolean;
-    FlyTime: Int64;{время полёта}
-    {топливо}
+    FlyTime: Int64;{flight time}
+    {fuel}
     fuel: Array[1..3] of record
       mass, speed:Extended;
     end;
@@ -52,7 +49,7 @@ uses unitFrmLibMain;
 procedure glBindTexture(target: GLenum; texture: GLuint); stdcall; external opengl32;
 
 procedure TRocket.UpgradeArrays;
-{обновление массивов}
+{array update}
 var
   i: Integer;
 begin
@@ -73,7 +70,7 @@ begin
 end;
 
 procedure TRocket.DrawDiagram;
-{прорисовка графика}
+{graph rendering}
 var
   i: Integer;
 begin
@@ -83,17 +80,17 @@ begin
 
   case frmGraphics.tabs.TabIndex of
     0: begin
-         frmGraphics.Chart.Title.Text.Text := 'Высота (м)';
+         frmGraphics.Chart.Title.Text.Text := 'Height (m)';
          for i := 1 to 500 do
            frmGraphics.Chart.Series[0].Add(HDiagram[i]);
        end;
     1: begin
-         frmGraphics.Chart.Title.Text.Text := 'Скорость (м/с)';
+         frmGraphics.Chart.Title.Text.Text := 'Speed (m/s)';
          for i := 1 to 500 do
            frmGraphics.Chart.Series[0].Add(SpeedDiagram[i]);
        end;
     2: begin
-         frmGraphics.Chart.Title.Text.Text := 'Ускорение (м/с^2)';
+         frmGraphics.Chart.Title.Text.Text := 'Acceleration (m/s^2)';
          for i := 1 to 500 do
            frmGraphics.Chart.Series[0].Add(AccelDiagram[i]);
        end;
@@ -101,7 +98,7 @@ begin
 end;
 
 procedure TRocket.CanStart(m,rs,fm1,fs1,fm2,fs2,fm3,fs3:Extended);
-{запускает ракету, когда удерётся подставка}
+{launches the rocket once the stand drops away}
 begin
   if not IsRun then
   begin
@@ -118,7 +115,7 @@ begin
 end;
 
 procedure TRocket.Calc;
-{расчёт движения ракеты}
+{rocket motion calculation}
 const
   t = 1 / 1000;
   g = 9.8067;
@@ -197,9 +194,8 @@ begin
 end;
 
 procedure TRocket.ReturnToBase;
-{вернуться на базу}
-{обнуляет все значения ракеты, кроме
- параметров, заданных в настройках}
+{return to base}
+{resets all rocket values except\n the parameters set in the options}
 var
   i: Integer;
 begin
@@ -229,11 +225,11 @@ constructor TRocket.Create;
 var
   i: Integer;
 begin
-  {создаём системы частиц}
+  {create particle systems}
   ParticleSystem1 := TParticleSystem.Create(0, 30, 0, 5);
   ParticleSystem2 := TParticleSystem.Create(0, 30, 0, 5);
 
-  {создаём Quadric-объекты}
+  {create Quadric objects}
   for i := 1 to 4 do
   begin
     QuadObj[i] := gluNewQuadric;
@@ -241,7 +237,7 @@ begin
     gluQuadricOrientation(QuadObj[i], GLU_OUTSIDE);
   end;
 
-  {обнуляем параметры ракеты}
+  {reset rocket parameters}
   IsRun := False;
   ReturnToBase;
 end;
@@ -261,7 +257,7 @@ begin
 end;
 
 procedure TRocket.Draw(param:Boolean);
-{перерисовка ракеты}
+{rocket redraw}
 var
   i: Integer;
 begin
@@ -271,7 +267,7 @@ begin
   for i := 1 to 20 do
     glPushMatrix;
 
-  {ступень 1}
+  {stage 1}
   glTranslatef(0, H1, 0);
   glRotatef(90, 1, 0, 0);
   gluCylinder(QuadObj[1], 2, 2, 10, 50, 50);
@@ -295,7 +291,7 @@ begin
 
   glBindTexture(GL_TEXTURE_2D, 5);
 
-  {маленькие ракеты}
+  {small rockets}
   glPopMatrix;
   glTranslatef(-2.3, H1 - 2, -2.3);
   glRotatef(90, 1, 0, 0);
@@ -358,7 +354,7 @@ begin
 
   glBindTexture(GL_TEXTURE_2D, 7);
   {==========================================}
-  {ступень 2}
+  {stage 2}
   glPopMatrix;
   glTranslatef(0, H2, 0);
   glRotatef(90, 1, 0, 0);
@@ -370,7 +366,7 @@ begin
   gluCylinder(QuadObj[2], 2.5, 2.5, 6, 50, 50);
 
   {==========================================}
-  {ступень 3}
+  {stage 3}
   glPopMatrix;
   glTranslatef(0, H - 5, 0);
   glRotatef(90, 1, 0, 0);

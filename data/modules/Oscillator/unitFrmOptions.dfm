@@ -2,7 +2,7 @@ object frmOptions: TfrmOptions
   Left = 163
   Top = 25
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 652
   ClientWidth = 194
   Color = clBtnFace
@@ -116,18 +116,16 @@ object frmOptions: TfrmOptions
     000280000001C0000003C0000003E0000007E0000007F000000FF000000FF800
     001FFC00003FFE00007FFF0000FFFFC003FFFFF00FFFFFFFFFFFFFFFFFFF}
   Menu = MainMenu
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object groupAddSpring: TGroupBox
     Left = 8
     Top = 8
     Width = 177
     Height = 153
-    Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1087#1088#1091#1078#1080#1085#1091
+    Caption = 'Add spring'
     TabOrder = 0
     object lblK: TLabel
       Left = 8
@@ -147,7 +145,7 @@ object frmOptions: TfrmOptions
       Top = 24
       Width = 23
       Height = 16
-      Caption = #1053'/'#1084
+      Caption = 'N/m'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -160,7 +158,7 @@ object frmOptions: TfrmOptions
       Top = 56
       Width = 43
       Height = 16
-      Caption = #1076#1083#1080#1085#1072':'
+      Caption = 'length:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -173,7 +171,7 @@ object frmOptions: TfrmOptions
       Top = 56
       Width = 9
       Height = 16
-      Caption = #1084
+      Caption = 'm'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -186,7 +184,7 @@ object frmOptions: TfrmOptions
       Top = 88
       Width = 68
       Height = 16
-      Caption = #1089#1084#1077#1097#1077#1085#1080#1077':'
+      Caption = 'displacement:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -199,7 +197,7 @@ object frmOptions: TfrmOptions
       Top = 88
       Width = 9
       Height = 16
-      Caption = #1084
+      Caption = 'm'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -236,7 +234,7 @@ object frmOptions: TfrmOptions
       Top = 120
       Width = 75
       Height = 25
-      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+      Caption = 'Add'
       TabOrder = 3
     end
   end
@@ -245,14 +243,14 @@ object frmOptions: TfrmOptions
     Top = 168
     Width = 177
     Height = 121
-    Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1075#1088#1091#1079
+    Caption = 'Add weight'
     TabOrder = 1
     object lblMass: TLabel
       Left = 8
       Top = 24
       Width = 42
       Height = 16
-      Caption = #1084#1072#1089#1089#1072':'
+      Caption = 'mass:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -265,7 +263,7 @@ object frmOptions: TfrmOptions
       Top = 24
       Width = 13
       Height = 16
-      Caption = #1082#1075
+      Caption = 'kg'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -278,7 +276,7 @@ object frmOptions: TfrmOptions
       Top = 56
       Width = 50
       Height = 16
-      Caption = #1088#1072#1076#1080#1091#1089':'
+      Caption = 'radius:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -291,7 +289,7 @@ object frmOptions: TfrmOptions
       Top = 56
       Width = 9
       Height = 16
-      Caption = #1084
+      Caption = 'm'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -320,7 +318,7 @@ object frmOptions: TfrmOptions
       Top = 88
       Width = 75
       Height = 25
-      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+      Caption = 'Add'
       TabOrder = 2
     end
   end
@@ -329,7 +327,7 @@ object frmOptions: TfrmOptions
     Top = 296
     Width = 81
     Height = 25
-    Caption = #1059#1076#1072#1083'. '#1087#1088#1077#1076'.'
+    Caption = 'Del. prev.'
     TabOrder = 2
   end
   object btnDelAll: TButton
@@ -337,7 +335,7 @@ object frmOptions: TfrmOptions
     Top = 296
     Width = 81
     Height = 25
-    Caption = #1059#1076#1072#1083'. '#1074#1089#1077
+    Caption = 'Del. all'
     TabOrder = 3
   end
   object groupSystemLength: TGroupBox
@@ -345,14 +343,14 @@ object frmOptions: TfrmOptions
     Top = 328
     Width = 177
     Height = 65
-    Caption = #1044#1083#1080#1085#1072' '#1089#1080#1089#1090#1077#1084#1099' '#1086#1089#1094#1080#1083#1083#1103#1090#1086#1088#1086#1074
+    Caption = 'Oscillator system length'
     TabOrder = 4
     object lblLengthValue: TLabel
       Left = 144
       Top = 24
       Width = 26
       Height = 16
-      Caption = '16 '#1084
+      Caption = '16 m'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -377,7 +375,7 @@ object frmOptions: TfrmOptions
     Top = 400
     Width = 177
     Height = 17
-    Caption = #1059#1095#1105#1090' '#1089#1090#1086#1083#1082#1085#1086#1074#1077#1085#1080#1081
+    Caption = 'Collisions'
     TabOrder = 5
   end
   object groupVisualization: TGroupBox
@@ -385,14 +383,14 @@ object frmOptions: TfrmOptions
     Top = 424
     Width = 177
     Height = 81
-    Caption = #1042#1080#1079#1091#1072#1083#1080#1079#1072#1094#1080#1103
+    Caption = 'Visualization'
     TabOrder = 6
     object lblDistance: TLabel
       Left = 8
       Top = 16
       Width = 79
       Height = 16
-      Caption = #1088#1072#1089#1089#1090#1086#1103#1085#1080#1077':'
+      Caption = 'distance:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -417,7 +415,7 @@ object frmOptions: TfrmOptions
     Top = 512
     Width = 81
     Height = 25
-    Caption = #1055#1091#1089#1082'!'
+    Caption = 'Start!'
     TabOrder = 7
   end
   object btnStop: TButton
@@ -425,14 +423,14 @@ object frmOptions: TfrmOptions
     Top = 512
     Width = 81
     Height = 25
-    Caption = #1057#1090#1086#1087
+    Caption = 'Stop'
     TabOrder = 8
   end
   object MainMenu: TMainMenu
     Left = 8
     Top = 544
     object N1: TMenuItem
-      Caption = #1052#1077#1085#1102
+      Caption = 'Menu'
       object N2: TMenuItem
         Bitmap.Data = {
           EE030000424DEE03000000000000360000002800000012000000110000000100
@@ -467,7 +465,7 @@ object frmOptions: TfrmOptions
           633600D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+        Caption = 'About'
         ShortCut = 112
         OnClick = N2Click
       end
@@ -502,7 +500,7 @@ object frmOptions: TfrmOptions
           D8E9ECD8E9EC8F6F1C8F6F1C8F6F1CD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9EC000000D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8
           E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000}
-        Caption = #1042#1099#1093#1086#1076
+        Caption = 'Exit'
         ShortCut = 16472
         OnClick = N3Click
       end

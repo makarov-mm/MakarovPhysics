@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, ExtCtrls, Menus;
+  Dialogs, StdCtrls, ComCtrls, ExtCtrls, Menus, Vcl.Mask;
 
 type
   TfrmOptions = class(TForm)
@@ -63,7 +63,7 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmOptions.btnStartClick(Sender: TObject);
@@ -93,9 +93,9 @@ begin
              and (StrToFloat(txtObjMass.Text) > 0) then
       r := True
     else
-      MessageBox(Handle, 'Заданы неправильные значения', 'Ошибка', MB_OK);
+      MessageBox(Handle, 'Invalid values specified', 'Error', MB_OK);
   except
-    MessageBox(Handle, 'Заданы неправильные значения', 'Ошибка', MB_OK);
+    MessageBox(Handle, 'Invalid values specified', 'Error', MB_OK);
   end;
 
   if r then
@@ -144,10 +144,10 @@ end;
 
 procedure TfrmOptions.N2Click(Sender: TObject);
 begin
-  About('Задача Кеплера',
-    'Дата создания: 5 декабря 2004 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Kepler problem',
+    'Created: December 5, 2004',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 

@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, Menus;
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, Menus, Vcl.Mask;
 
 type
   TfrmOptions = class(TForm)
@@ -66,7 +66,7 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmOptions.tbDistanceChange(Sender: TObject);
@@ -122,7 +122,7 @@ begin
         IsRun:=True;
       end;
     except
-      MessageBox(Handle,'Введены неправильные значения','Ошибка',MB_OK or MB_ICONERROR);
+      MessageBox(Handle,'Invalid values entered','Error',MB_OK or MB_ICONERROR);
     end;
   end;
 end;
@@ -151,10 +151,10 @@ end;
 
 procedure TfrmOptions.N2Click(Sender: TObject);
 begin
-  About('Электроны в электрическом поле',
-    'Дата создания: 26 декабря 2004 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Electrons in an electric field',
+    'Created: December 26, 2004',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 

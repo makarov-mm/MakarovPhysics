@@ -1,15 +1,13 @@
 unit unitFrmOptions;
 {
-программа: колебания водной поверхности
-разработчик: Макаров М.М.
-дата создания: 2 марта 2005
+program: water surface oscillations\nauthor: M.M. Makarov\ncreated: March 2, 2005
 }
 
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Menus;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus, Vcl.Mask;
 
 type
   TfrmOptions = class(TForm)
@@ -70,7 +68,7 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmOptions.FormCanResize(Sender: TObject; var NewWidth,
@@ -107,8 +105,8 @@ begin
         frmLibMain.B[i, j] := 0;
       end;
   except
-    MessageBox(Handle, 'Введены неправильные значения',
-                       'Ошибка', MB_OK or MB_ICONERROR);
+    MessageBox(Handle, 'Invalid values entered',
+                       'Error', MB_OK or MB_ICONERROR);
   end;
   frmLibMain.RenderTimer.Enabled := True;
 end;
@@ -120,10 +118,10 @@ end;
 
 procedure TfrmOptions.N3Click(Sender: TObject);
 begin
-  About('Дождь',
-    'Дата создания: 2 марта 2005 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Rain',
+    'Created: March 2, 2005',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 

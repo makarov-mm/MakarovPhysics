@@ -3,8 +3,8 @@ unit unitFrmLibMain;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, OpenGL, Spring;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, Vcl.ExtCtrls, OpenGL, Spring;
 
 type
   TfrmLibMain = class(TForm)
@@ -31,19 +31,19 @@ type
     procedure Render;
     procedure DrawBox(x, y, z, dx, dy, dz: Single);
   public
-    g,{ускорение свободного падения}
-    m,{масса груза}
-    defaultLen,{длина пружины}
-    k,{коэффициент жёсткости}
-    S,{смещение}
-    Period,{период колебаний}
+    g,{free-fall acceleration}
+    m,{weight mass}
+    defaultLen,{spring length}
+    k,{stiffness coefficient}
+    S,{displacement}
+    Period,{oscillation period}
     currPeriod,
-    Freq,{Частота колебаний}
-    preSpeed, Speed,{скорость}
-    Acceleration: Extended;{ускорение}
-    SArray,{смещение}
-    VArray,{скорость}
-    AArray: Array[1..200] of Single;{ускорение}
+    Freq,{Oscillation frequency}
+    preSpeed, Speed,{speed}
+    Acceleration: Extended;{acceleration}
+    SArray,{displacement}
+    VArray,{speed}
+    AArray: Array[1..200] of Single;{acceleration}
     IsRun: Boolean;
     MySpring: TSpring;
   end;
@@ -60,7 +60,7 @@ uses unitFrmOptions, unitFrmGraphics;
 {$R *.dfm}
 
 procedure InitLibrary(App,CallForm:THandle);
-{Инициализация библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
@@ -71,7 +71,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawBox(x, y, z, dx, dy, dz: Single);
-{прямоугольный параллелепипед}
+{rectangular parallelepiped}
 begin
   glBegin(GL_QUADS);
 
@@ -125,7 +125,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDefaultWindowsPosition;
-{настройка расположения окон}
+{window layout setup}
 const
   w = 209;
 begin
@@ -166,18 +166,18 @@ procedure TfrmLibMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   MySpring.Destroy;
 
-  {удаление дополнительных форм}
+  {removing additional forms}
   frmOptions.Destroy;
   frmGraphics.Destroy;
 
-  {завершение работы OpenGL}
+  {OpenGL shutdown}
   gluDeleteQuadric(quadObj);
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle, DC);
   DeleteDC(DC);
 
-  {завершение работы модуля}
+  {module shutdown}
   SendMessage(CallerForm, WM_USER, 0, 0);
   Destroy;
 end;
@@ -186,13 +186,13 @@ procedure TfrmLibMain.FormShow(Sender: TObject);
 begin
   SetDefaultWindowsPosition;
 
-  {инициализация OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
   wglMakeCurrent(DC, HRC);
 
-  {настройка OpenGL}
+  {OpenGL setup}
   glEnable(GL_DEPTH_TEST);
   quadObj := gluNewQuadric;
   gluQuadricDrawStyle(quadObj, GLU_FILL);
@@ -214,7 +214,7 @@ begin
 end;
 
 procedure TfrmLibMain.Calc;
-{вычисления}
+{calculations}
 const
   dt = 1 / 4000;
 var
@@ -241,19 +241,19 @@ begin
   end;
 
   frmOptions.txtDX.Text := FloatToStr(S);
-  frmOptions.txtResult.Text := 'Смещение (м): ' + FloatToStrF(S, ffFixed, 10, 5) + #13#10 +
-                               'Скорость (м/с): ' + FloatToStrF(Speed, ffFixed, 10, 5) + #13#10 +
-                               'Ускорение (м/с^2): ' + FloatToStrF(Acceleration, ffFixed, 10, 5) + #13#10 +
-                               'Период (с): ' + FloatToStrF(Period, ffFixed, 10, 5) + #13#10 +
-                               'Частота (Гц): ' + FloatToStrF(Freq, ffFixed, 10, 5);
+  frmOptions.txtResult.Text := 'Displacement (m): ' + FloatToStrF(S, ffFixed, 10, 5) + #13#10 +
+                               'Speed (m/s): ' + FloatToStrF(Speed, ffFixed, 10, 5) + #13#10 +
+                               'Acceleration (m/s^2): ' + FloatToStrF(Acceleration, ffFixed, 10, 5) + #13#10 +
+                               'Period (s): ' + FloatToStrF(Period, ffFixed, 10, 5) + #13#10 +
+                               'Frequency (Hz): ' + FloatToStrF(Freq, ffFixed, 10, 5);
 end;
 
 procedure TfrmLibMain.DrawGraphics;
-{прорисовка графиков}
+{graphs rendering}
 var
   i: Integer;
 begin
-  {смещение значений массивов}
+  {array values shift}
   for i := 1 to 199 do
   begin
     SArray[i] := SArray[i + 1];
@@ -261,20 +261,20 @@ begin
     AArray[i] := AArray[i + 1];
   end;
 
-  {добавление новых занчений}
+  {adding new values}
   SArray[200] := S;
   VArray[200] := Speed;
   AArray[200] := Acceleration;
 
-  {прорисовка}
+  {rendering}
   with frmGraphics do
   begin
     chartDX.Series[0].Clear;
     chartSpeed.Series[0].Clear;
     chartAccel.Series[0].Clear;
-    chartDX.Title.Text.Text:='Смещение (м): ' + FloatToStr(S);
-    chartSpeed.Title.Text.Text:='Скорость (м/c): ' + FloatToStr(Speed);
-    chartAccel.Title.Text.Text:='Ускорение (м/c^2): ' + FloatToStr(Acceleration);
+    chartDX.Title.Text.Text:='Displacement (m): ' + FloatToStr(S);
+    chartSpeed.Title.Text.Text:='Speed (m/s): ' + FloatToStr(Speed);
+    chartAccel.Title.Text.Text:='Acceleration (m/s^2): ' + FloatToStr(Acceleration);
 
     for i := 1 to 200 do
     begin
@@ -286,7 +286,7 @@ begin
 end;
 
 procedure TfrmLibMain.Render;
-{рендеринг}
+{rendering}
 begin
   wglMakeCurrent(DC, HRC);
   BeginPaint(Handle, ps);

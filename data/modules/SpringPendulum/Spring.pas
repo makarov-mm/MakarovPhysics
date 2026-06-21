@@ -6,12 +6,12 @@ uses
   Windows, OpenGL, SysUtils;
 
 type
-  {класс пружины}
+  {spring class}
   TSpring = class
   public
-    x1,{координата начала}
-    x2,{координата конца}
-    deflen:Extended;{начальная длина (без растяжения или сжатия)}
+    x1,{start coordinate}
+    x2,{end coordinate}
+    deflen:Extended;{initial length (without stretching or compression)}
     procedure Render;
   end;
 

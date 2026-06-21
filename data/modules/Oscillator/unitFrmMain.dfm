@@ -2,7 +2,7 @@ object frmLibMain: TfrmLibMain
   Left = 257
   Top = 216
   BorderStyle = bsSizeToolWin
-  Caption = #1057#1080#1089#1090#1077#1084#1072' '#1089#1074#1103#1079#1072#1085#1085#1099#1093' '#1086#1089#1094#1080#1083#1083#1103#1090#1086#1088#1086#1074
+  Caption = 'Coupled oscillator system'
   ClientHeight = 438
   ClientWidth = 678
   Color = clBtnFace

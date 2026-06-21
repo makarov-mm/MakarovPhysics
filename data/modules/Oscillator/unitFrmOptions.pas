@@ -86,7 +86,7 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmOptions.FormCanResize(Sender: TObject; var NewWidth,
@@ -107,15 +107,15 @@ end;
 
 procedure TfrmOptions.tbLengthChange(Sender: TObject);
 begin
-  lblLengthValue.Caption := IntToStr(tbLength.Position) + ' м';
+  lblLengthValue.Caption := IntToStr(tbLength.Position) + ' m';
 end;
 
 procedure TfrmOptions.N2Click(Sender: TObject);
 begin
-  About('Системы осцилляторов',
-    'Дата создания: 1 декабря 2004 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Oscillator systems',
+    'Created: December 1, 2004',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 

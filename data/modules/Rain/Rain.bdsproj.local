@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2006.11.30 09:27:49.453.pas,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\Unit2.pas=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\unitFrmOptions.pas</Transaction>
-    <Transaction>2006.11.30 09:27:49.453.dfm,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\Unit2.dfm=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\unitFrmOptions.dfm</Transaction>
-    <Transaction>2006.11.30 09:28:34.593.pas,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\Unit1.pas=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\unitFrmLibMain.pas</Transaction>
-    <Transaction>2006.11.30 09:28:34.593.dfm,C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\Unit1.dfm=C:\Documents and Settings\NightmareZ\Рабочий стол\TO_BACKUP\MY_SOFT\физика 1.2\sources\data\modules\Rain\unitFrmLibMain.dfm</Transaction>
-  </Transactions>
-</BorlandProject>

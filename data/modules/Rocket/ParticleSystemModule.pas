@@ -1,8 +1,5 @@
 {
-Программа: Полёт ракеты
-Разработчик: Макаров М.М.
-Дата создания: Ноябрь 2004 года
-Среда разработки: Delphi 7
+Program: Rocket flight\nAuthor: M.M. Makarov\nCreated: November 2004\nIDE: Delphi 7
 }
 unit ParticleSystemModule;
 
@@ -12,18 +9,18 @@ uses Windows, OpenGL;
 
 type
   TMyParticle = record
-    x, y, z: Single;{координаты частицы}
-    speed: record{скорость частицы}
+    x, y, z: Single;{particle coordinates}
+    speed: record{particle speed}
       x, y, z: Single;
     end;
-    lifetime: Integer;{время жизни частицы}
+    lifetime: Integer;{particle lifetime}
   end;
 
   TParticleSystem = class
   private
-    p: TMyParticle;{позиция появления частиц}
-    pa: Array[1..5000] of TMyParticle; {массив частиц}
-    r: Single;{радиус сферы}
+    p: TMyParticle;{particle spawn position}
+    pa: Array[1..5000] of TMyParticle; {array of particles}
+    r: Single;{sphere radius}
   public
     constructor Create(x, y, z, Radius: Single);
     destructor Destroy; override;
@@ -35,7 +32,7 @@ type
 implementation
 
 procedure TParticleSystem.Render;
-{рендеринг частиц}
+{particle rendering}
 const
   dt = 40 / 1000;
 var
@@ -73,7 +70,7 @@ begin
 end;
 
 procedure TParticleSystem.Generate;
-{генерация частиц}
+{particle generation}
 var
   i: Integer;
   t: Boolean;
@@ -107,7 +104,7 @@ begin
 end;
 
 procedure TParticleSystem.ParticleGenSphere(x, y, z, Radius, s: Single);
-{задание параметров сферы, где генерируются частицы}
+{set parameters of the sphere where particles are generated}
 begin
   p.x := x;
   p.y := y;

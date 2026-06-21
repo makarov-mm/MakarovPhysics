@@ -1,8 +1,5 @@
 {
-Программа: Полёт ракеты
-Разработчик: Макаров М.М.
-Дата создания: Ноябрь 2004 года
-Среда разработки: Delphi 7
+Program: Rocket flight\nAuthor: M.M. Makarov\nCreated: November 2004\nIDE: Delphi 7
 }
 unit InfoUnit;
 
@@ -13,7 +10,7 @@ uses
 
 type
   TMyThread = class(TThread)
-    MyRocket: TRocket;{объект класса Ракета}
+    MyRocket: TRocket;{object of the Rocket class}
     procedure Execute;override;
     procedure ShowInfo;
   private
@@ -23,7 +20,7 @@ type
 implementation
 
 procedure TMyThread.ShowInfo;
-{вывод информации о ракете в frmResults.RichEdit1}
+{output rocket information to frmResults.RichEdit1}
 begin
   i := MyRocket.fuel[1].mass;
   j := MyRocket.fuel[2].mass;
@@ -34,17 +31,17 @@ begin
   if k < 0 then k := 0;
 
   frmResults.txtResult.Text :=
-    'Время полёта: ' + IntToStr(Round(MyRocket.FlyTime / 1000)) + ' (с)' + #13#10 +
-    'Высота: ' + FloatToStr(MyRocket.H - 32) + ' (м)' + #13#10 +
-    'Скорость: ' + FloatToStr(MyRocket.Speed) + ' (м/c)' + #13#10 +
-    'Ускорение: ' + FloatToStr(MyRocket.Acceleration) + ' (м/c^2)' + #13#10 +
-    'Масса топлива первой ступени: ' + FloatToStr(i) + ' (кг)' + #13#10 +
-    'Масса топлива второй ступени: ' + FloatToStr(j) + ' (кг)' + #13#10 +
-    'Масса топлива третьей ступени: ' + FloatToStr(k) + ' (кг)';
+    'Flight time: ' + IntToStr(Round(MyRocket.FlyTime / 1000)) + ' (s)' + #13#10 +
+    'Height: ' + FloatToStr(MyRocket.H - 32) + ' (m)' + #13#10 +
+    'Speed: ' + FloatToStr(MyRocket.Speed) + ' (m/s)' + #13#10 +
+    'Acceleration: ' + FloatToStr(MyRocket.Acceleration) + ' (m/s^2)' + #13#10 +
+    'First stage fuel mass: ' + FloatToStr(i) + ' (kg)' + #13#10 +
+    'Second stage fuel mass: ' + FloatToStr(j) + ' (kg)' + #13#10 +
+    'Third stage fuel mass: ' + FloatToStr(k) + ' (kg)';
 end;
 
 procedure TMyThread.Execute;
-{основной цикл потока}
+{main thread loop}
 begin
   repeat
     Synchronize(ShowInfo);

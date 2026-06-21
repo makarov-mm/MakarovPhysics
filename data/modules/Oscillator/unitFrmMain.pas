@@ -20,23 +20,23 @@ type
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
   private
-    CallerForm: THandle;{вызывающая форма}
+    CallerForm: THandle;{calling form}
     DC: HDC;
     HRC: HGLRC;
     ps: TPaintStruct;
     pfd: TPixelFormatDescriptor;
     nPixelFormat: Integer;
     RenderTimerID: Integer;
-    preX: Integer;{предыдущее положение мыши}
-    IsLMouseKeyDown: Boolean;{нажата ли левая кнопка мыши}
-    rotation: Extended;{угол поворота системы координат по оси Y}
-    IsRun: Boolean;{ведутся ли расчёты}
+    preX: Integer;{previous mouse position}
+    IsLMouseKeyDown: Boolean;{whether the left mouse button is pressed}
+    rotation: Extended;{coordinate system rotation angle around the Y axis}
+    IsRun: Boolean;{whether calculations are running}
     procedure SetDCPixelFormat;
     procedure Render;
     procedure SetDefaultWindowsPosition;
     procedure UpgradeOscillList;
   public
-    Oscill: TOscillSystem;{система осцилляторов}
+    Oscill: TOscillSystem;{oscillator system}
     procedure DrawBox(x, y, z, dx, dy, dz: Extended);
     procedure AddSpring(Sender: TObject);
     procedure AddSphere(Sender: TObject);
@@ -56,13 +56,13 @@ implementation
 {$R *.dfm}
 
 procedure InitLibrary(App, CallForm: THandle);
-{Инициализация библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
   frmLibMain.CallerForm := CallForm;
 
-  {создание дополнительных форм}
+  {create additional forms}
   frmOptions := TfrmOptions.Create(Application);
   frmGraphics := TfrmGraphics.Create(Application);
   frmOptions.btnAddSpring.OnClick := frmLibMain.AddSpring;
@@ -75,19 +75,19 @@ begin
 end;
 
 procedure TfrmLibMain.UpgradeOscillList;
-{обновить список грузов в frmGraphics.ComboBox1}
+{refresh the weight list in frmGraphics.ComboBox1}
 var
   i: Integer;
 begin
   frmGraphics.cbWeight.Clear;
   if Oscill.HowManySpheres > 0 then
     for i := 1 to Oscill.HowManySpheres do
-      frmGraphics.cbWeight.AddItem('Груз ' + IntToStr(i), Self);
+      frmGraphics.cbWeight.AddItem('Weight ' + IntToStr(i), Self);
   frmGraphics.cbWeight.ItemIndex := 0;
 end;
 
 procedure TfrmLibMain.AddSpring(Sender: TObject);
-{добавить пружину}
+{add spring}
 var
   k, len, dx: Extended;
 begin
@@ -98,18 +98,18 @@ begin
     len := StrToFloat(frmOptions.txtLength.Text);
     dx := StrToFloat(frmOptions.txtDx.Text);
   except
-    MessageBox(Handle, 'Заданы неправильные значения', 'Ошибка', 0);
+    MessageBox(Handle, 'Invalid values specified', 'Error', 0);
   end;
   if (k > 0) and (len > 0) then
   begin
     Oscill.AddSpring(k, len, dx);
     UpgradeOscillList;
   end else
-    MessageBox(Handle, 'Заданы неправильные значения', 'Ошибка', 0);
+    MessageBox(Handle, 'Invalid values specified', 'Error', 0);
 end;
 
 procedure TfrmLibMain.AddSphere(Sender: TObject);
-{добавить груз}
+{add weight}
 var
   mass, radius: Extended;
 begin
@@ -119,49 +119,49 @@ begin
     mass := StrToFloat(frmOptions.txtMass.Text);
     radius := StrToFloat(frmOptions.txtRadius.Text);
   except
-    MessageBox(Handle, 'Заданы неправильные значения', 'Ошибка', 0);
+    MessageBox(Handle, 'Invalid values specified', 'Error', 0);
   end;
   if (mass > 0) and (radius > 0) then
   begin
     Oscill.AddSphere(mass, radius);
     UpgradeOscillList;
   end else
-    MessageBox(Handle, 'Заданы неправильные значения', 'Ошибка', 0);
+    MessageBox(Handle, 'Invalid values specified', 'Error', 0);
 end;
 
 procedure TfrmLibMain.DelPrev(Sender: TObject);
-{удалить предыдущий объект}
+{delete the previous object}
 begin
   Oscill.DelPrev;
   UpgradeOscillList;
 end;
 
 procedure TfrmLibMain.DelAll(Sender: TObject);
-{удалить все}
+{delete all}
 begin
   Oscill.DelAll;
   UpgradeOscillList;
 end;
 
 procedure TfrmLibMain.Start(Sender: TObject);
-{Пуск!}
+{Start!}
 begin
   frmOptions.CorrectDelimiters;
   If Oscill.IsReady then
     IsRun := True
   else
-    MessageBox(Handle, 'Невозможно запустить систему в такой конфигурации',
-                       'Ошибка', MB_OK);
+    MessageBox(Handle, 'Cannot start the system in this configuration',
+                       'Error', MB_OK);
 end;
 
 procedure TfrmLibMain.Stop(Sender: TObject);
-{Стоп}
+{Stop}
 begin
   IsRun := False;
 end;
 
 procedure TfrmLibMain.SetDCPixelFormat;
-{настройка формата пикселя}
+{pixel format setup}
 begin
   FillChar(pfd, SizeOf(pfd), 0);
   pfd.dwFlags := PFD_SUPPORT_OPENGL or
@@ -172,7 +172,7 @@ begin
 end;
 
 procedure TfrmLibMain.DrawBox(x, y, z, dx, dy, dz: Extended);
-{прямоугольный параллелепипед}
+{rectangular parallelepiped}
 begin
   glBegin(GL_QUADS);
 
@@ -216,7 +216,7 @@ begin
 end;
 
 procedure TfrmLibMain.Render;
-{рендеринг}
+{rendering}
 begin
   wglMakeCurrent(DC, HRC);
   BeginPaint(Handle, ps);
@@ -227,16 +227,16 @@ begin
   glRotatef(rotation, 0, 1, 0);
   {======================================}
 
-  {прорисовка прямоугольных параллелепипедов}
+  {rectangular parallelepipeds rendering}
   DrawBox(-frmOptions.tbLength.Position / 2 - 1, -0.5, -3, 1, 1, 6);
   DrawBox(frmOptions.tbLength.Position / 2, -0.5, -3, 1, 1, 6);
 
-  {рендеринг системы осцилляторов}
+  {oscillator system rendering}
   Oscill.minX := -frmOptions.tbLength.Position / 2;
   Oscill.maxX := frmOptions.tbLength.Position / 2;
   IsRun := Oscill.Render(IsRun, frmOptions.cbCollisions.Checked);
 
-  {прорисовка графиков}
+  {graphs rendering}
   Oscill.DrawGraphic(frmGraphics.cbWeight.ItemIndex,
                      frmGraphics.tabs.TabIndex);
 
@@ -246,7 +246,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDefaultWindowsPosition;
-{настройка стандартного расположения окон}
+{default window layout setup}
 const
   dw = 209;
   dh = 0.7;
@@ -286,27 +286,27 @@ end;
 
 procedure TfrmLibMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  {уничтожение таймера рендеринга}
+  {destroying the rendering timer}
   KillTimer(Handle, RenderTimerID);
 
-  {завершение работы с OpenGL}
+  {OpenGL shutdown}
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle, DC);
   DeleteDC(DC);
 
-  {уничтожение системы осцилляторов}
+  {destroying the oscillator system}
   Oscill.Destroy;
 
-  {уничтожение форм}
+  {destroying forms}
   frmOptions.Destroy;
   frmGraphics.Destroy;
-  {завершение работы модуля}
+  {module shutdown}
   SendMessage(CallerForm, WM_USER, 0, 0);
   Destroy;
 end;
 
-procedure RenderTimerTick;
+procedure RenderTimerTick(AHwnd: HWND; AMsg: UINT; AEvent: UINT_PTR; ATime: DWORD); stdcall;
 begin
   frmLibMain.Render;
 end;
@@ -320,13 +320,13 @@ begin
   IsLMouseKeyDown := False;
   preX := 0;
 
-  {инициализация OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
   wglMakeCurrent(DC, HRC);
 
-  {настройка OpenGL}
+  {OpenGL setup}
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
@@ -342,15 +342,15 @@ begin
   glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, @material);
   glLightfv(GL_LIGHT0, GL_POSITION, @light);
 
-  {создание системы осцилляторов}
+  {create the oscillator system}
   Oscill := TOscillSystem.Create(Handle);
   Oscill.minX := -frmOptions.tbLength.Position / 2;
   Oscill.maxX := frmOptions.tbLength.Position / 2;
 
-  {настройка расположения окон}
+  {window layout setup}
   SetDefaultWindowsPosition;
 
-  {запуск таймера рендеринга}
+  {start rendering timer}
   Randomize;
   RenderTimerID := Random(10000);
   SetTimer(Handle, RenderTimerID, 40, @RenderTimerTick);

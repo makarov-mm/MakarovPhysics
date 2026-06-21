@@ -3,8 +3,9 @@ unit unitFrmGraphics;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, TeEngine, Series, ExtCtrls, TeeProcs, Chart;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, TeEngine, Series, Vcl.ExtCtrls, TeeProcs, Chart,
+  VclTee.TeeGDIPlus;
 
 type
   TfrmGraphics = class(TForm)

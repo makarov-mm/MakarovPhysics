@@ -1,8 +1,5 @@
 {
-Программа: Полёт ракеты
-Разработчик: Макаров М.М.
-Дата создания: Ноябрь 2004 года
-Среда разработки: Delphi 7
+Program: Rocket flight\nAuthor: M.M. Makarov\nCreated: November 2004\nIDE: Delphi 7
 }
 unit RocketBaseUnit;
 
@@ -14,10 +11,10 @@ uses
 type
   TRocketBase = class
   private
-    x, z: Single;{координаты}
-    IsRun: Boolean;{падает ли оно}
+    x, z: Single;{coordinates}
+    IsRun: Boolean;{whether it is falling}
   public
-    Angle: Single;{угол}
+    Angle: Single;{angle}
     constructor Create;
     procedure Draw;
     procedure Turn;
@@ -29,7 +26,7 @@ procedure DrawQuadrangle(x1, y1, z1,
                          x2, y2, z2,
                          x3, y3, z3,
                          x4, y4, z4: Single);
-{нарисовать полигон и просчитать для него нормали}
+{draw a polygon and compute its normals}
 var
   wrki, vx1, vy1, vz1, vx2, vy2, vz2: Single;
 begin
@@ -59,7 +56,7 @@ begin
 end;
 
 procedure DrawBox(x,y,z,xWidth,yWidth,zWidth:Single);
-{нарисовать прямоугольный параллелепипед}
+{draw a rectangular parallelepiped}
 begin
   glBegin(GL_QUADS);
 
@@ -105,13 +102,13 @@ begin
 end;
 
 procedure TRocketBase.Turn;
-{толкнуть конструкцию}
+{push the structure}
 begin
   if Angle < 20 then IsRun := True;
 end;
 
 procedure TRocketBase.Draw;
-{прорисовка}
+{rendering}
 begin
   if IsRun then
     Angle := Angle + 0.3;

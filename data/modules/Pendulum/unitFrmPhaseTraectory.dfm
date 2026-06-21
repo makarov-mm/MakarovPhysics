@@ -2,7 +2,7 @@ object frmPhaseTraectory: TfrmPhaseTraectory
   Left = 207
   Top = 142
   BorderStyle = bsSizeToolWin
-  Caption = #1060#1072#1079#1086#1074#1072#1103' '#1090#1088#1072#1077#1082#1090#1086#1088#1080#1103
+  Caption = 'Phase trajectory'
   ClientHeight = 444
   ClientWidth = 686
   Color = clBtnFace
@@ -129,8 +129,8 @@ object frmPhaseTraectory: TfrmPhaseTraectory
     BackWall.Brush.Style = bsClear
     Title.Text.Strings = (
       '')
-    BottomAxis.Title.Caption = #1059#1075#1086#1083' ('#1075#1088#1072#1076')'
-    LeftAxis.Title.Caption = #1059#1075#1083#1086#1074#1072#1103' '#1089#1082#1086#1088#1086#1089#1090#1100' ('#1075#1088#1072#1076'/'#1089')'
+    BottomAxis.Title.Caption = 'Angle (deg)'
+    LeftAxis.Title.Caption = 'Angular speed (deg/s)'
     Legend.Visible = False
     View3D = False
     Align = alClient

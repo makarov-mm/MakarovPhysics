@@ -2,7 +2,7 @@ object frmLibMain: TfrmLibMain
   Left = 217
   Top = 137
   BorderStyle = bsSizeToolWin
-  Caption = #1055#1086#1089#1090#1088#1086#1077#1085#1080#1077' '#1084#1091#1083#1100#1090#1080#1087#1086#1083#1100#1085#1099#1093' '#1101#1083#1077#1082#1090#1088#1080#1095#1077#1089#1082#1080#1093' '#1087#1086#1083#1077#1081
+  Caption = 'Multipole electric field construction'
   ClientHeight = 438
   ClientWidth = 678
   Color = clBtnFace

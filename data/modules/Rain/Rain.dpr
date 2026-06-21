@@ -1,8 +1,6 @@
 library Rain;
 {
-программа: колебания водной поверхности
-разработчик: Макаров М.М.
-дата создания: 2 марта 2005
+program: water surface oscillations\nauthor: M.M. Makarov\ncreated: March 2, 2005
 }
 
 uses

@@ -1,9 +1,6 @@
 library engine;
 {
-движок для комплекса физических программ
-разработчик: Макаров М.М.
-дата создания: 20.II.2005
-обновление: 20.XI.2006
+engine for the physics programs complex\nauthor: M.M. Makarov\ncreated: 20.II.2005\nupdated: 20.XI.2006
 }
 
 uses
@@ -21,7 +18,7 @@ const
 procedure glBindTexture(target: GLenum; texture: GLuint); stdcall; external opengl32;
 
 procedure SetDCPixelFormat(DC:HDC);
-{установка формата пиксела}
+{pixel format setup}
 var
   pfd: TPixelFormatDescriptor;
   nPixelFormat: Integer;
@@ -57,7 +54,7 @@ begin
 end;
 
 function About: ShortString;
-{о программе}
+{about}
 begin
   Result := 'Designed by Makarov M.M. @ 20.II.2005';
 end;
@@ -65,7 +62,7 @@ end;
 procedure LoadTexture(PackFile: ShortString;
                       NumberInPack: Integer;
                       NumberInMemory: Integer);
-{процедура для загрузки текстуры}
+{texture loading procedure}
 var
   arr: tex256;
   f: file of tex256;
@@ -94,7 +91,7 @@ end;
 procedure LoadTexture512(PackFile: ShortString;
                          NumberInPack: Integer;
                          NumberInMemory: Integer);
-{процедура для загрузки текстуры}
+{texture loading procedure}
 var
   arr: tex512;
   f: file of tex512;
@@ -123,7 +120,7 @@ end;
 procedure LoadTextureSphere(PackFile: ShortString;
                             NumberInPack: Integer;
                             NumberInMemory: Integer);
-{процедура для загрузки текстуры}
+{texture loading procedure}
 var
   arr: tex256;
   f: file of tex256;
@@ -152,7 +149,7 @@ begin
 end;
 
 procedure DrawOneSideTexturedBox(x, y, z, dx, dy, dz: Extended);
-{бокс для меню в главной программе}
+{box for the menu in the main program}
 begin
   glDisable(GL_TEXTURE_2D);
 
@@ -205,7 +202,7 @@ end;
 
 procedure DrawSkyBox(x, y, z, dx, dy, dz: Extended;
                      tex1, tex2, tex3, tex4, tex5, tex6: Integer);
-{скайбокс}
+{skybox}
 const
   d = 1;
 begin

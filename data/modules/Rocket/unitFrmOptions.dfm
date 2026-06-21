@@ -2,7 +2,7 @@ object frmOptions: TfrmOptions
   Left = 777
   Top = 70
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 612
   ClientWidth = 211
   Color = clBtnFace
@@ -116,17 +116,15 @@ object frmOptions: TfrmOptions
     07FFF80001FFFFE000FFFFF0007FFFF0003FFFF8001FFFFC001FFFFE000FFFFE
     000FFFFF0007FFFF8007FFFFC007FFFFE003FFFFF803FFFFFE03FFFFFFC3}
   Menu = MainMenu
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
-  PixelsPerInch = 96
   TextHeight = 13
   object groupRocket: TGroupBox
     Left = 8
     Top = 8
     Width = 177
     Height = 105
-    Caption = #1056#1072#1082#1077#1090#1072
+    Caption = 'Rocket'
     TabOrder = 0
     object txtMass: TLabeledEdit
       Left = 8
@@ -135,7 +133,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 108
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1088#1072#1082#1077#1090#1099' ('#1090#1086#1085#1085'):'
+      EditLabel.Caption = 'Rocket mass (tons):'
       TabOrder = 0
       Text = '6'
     end
@@ -146,7 +144,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 110
       EditLabel.Height = 13
-      EditLabel.Caption = #1057#1082#1086#1088#1086#1089#1090#1100' '#1089#1090#1088#1091#1080' ('#1084'/'#1089'):'
+      EditLabel.Caption = 'Jet speed (m/s):'
       TabOrder = 1
       Text = '3000'
     end
@@ -156,7 +154,7 @@ object frmOptions: TfrmOptions
     Top = 120
     Width = 177
     Height = 105
-    Caption = #1057#1090#1091#1087#1077#1085#1100' 1'
+    Caption = 'Stage 1'
     TabOrder = 1
     object txtFuelPerSec1: TLabeledEdit
       Left = 8
@@ -165,7 +163,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 114
       EditLabel.Height = 13
-      EditLabel.Caption = #1056#1072#1089#1093#1086#1076' '#1090#1086#1087#1083#1080#1074#1072' ('#1082#1075'/'#1089'):'
+      EditLabel.Caption = 'Fuel consumption (kg/s):'
       TabOrder = 0
       Text = '1600'
     end
@@ -176,7 +174,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 112
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1090#1086#1087#1083#1080#1074#1072' ('#1090#1086#1085#1085'):'
+      EditLabel.Caption = 'Fuel mass (tons):'
       TabOrder = 1
       Text = '240'
     end
@@ -186,7 +184,7 @@ object frmOptions: TfrmOptions
     Top = 232
     Width = 177
     Height = 105
-    Caption = #1057#1090#1091#1087#1077#1085#1100' 2'
+    Caption = 'Stage 2'
     TabOrder = 2
     object txtFuelPerSec2: TLabeledEdit
       Left = 8
@@ -195,7 +193,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 114
       EditLabel.Height = 13
-      EditLabel.Caption = #1056#1072#1089#1093#1086#1076' '#1090#1086#1087#1083#1080#1074#1072' ('#1082#1075'/'#1089'):'
+      EditLabel.Caption = 'Fuel consumption (kg/s):'
       TabOrder = 0
       Text = '500'
     end
@@ -206,7 +204,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 112
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1090#1086#1087#1083#1080#1074#1072' ('#1090#1086#1085#1085'):'
+      EditLabel.Caption = 'Fuel mass (tons):'
       TabOrder = 1
       Text = '40'
     end
@@ -216,7 +214,7 @@ object frmOptions: TfrmOptions
     Top = 344
     Width = 177
     Height = 105
-    Caption = #1057#1090#1091#1087#1077#1085#1100' 3'
+    Caption = 'Stage 3'
     TabOrder = 3
     object txtFuelPerSec3: TLabeledEdit
       Left = 8
@@ -225,7 +223,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 114
       EditLabel.Height = 13
-      EditLabel.Caption = #1056#1072#1089#1093#1086#1076' '#1090#1086#1087#1083#1080#1074#1072' ('#1082#1075'/'#1089'):'
+      EditLabel.Caption = 'Fuel consumption (kg/s):'
       TabOrder = 0
       Text = '132'
     end
@@ -236,7 +234,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 112
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1090#1086#1087#1083#1080#1074#1072' ('#1090#1086#1085#1085'):'
+      EditLabel.Caption = 'Fuel mass (tons):'
       TabOrder = 1
       Text = '14'
     end
@@ -248,7 +246,7 @@ object frmOptions: TfrmOptions
     Height = 21
     EditLabel.Width = 169
     EditLabel.Height = 13
-    EditLabel.Caption = #1052#1072#1089#1089#1072' '#1088#1072#1082#1077#1090#1099' '#1089' '#1090#1086#1087#1083#1080#1074#1086#1084' ('#1090#1086#1085#1085'):'
+    EditLabel.Caption = 'Rocket mass with fuel (tons):'
     TabOrder = 4
     Text = '300'
   end
@@ -257,7 +255,7 @@ object frmOptions: TfrmOptions
     Top = 504
     Width = 57
     Height = 25
-    Caption = #1055#1091#1089#1082'!'
+    Caption = 'Start!'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -272,7 +270,7 @@ object frmOptions: TfrmOptions
     Top = 504
     Width = 49
     Height = 25
-    Caption = #1057#1090#1086#1087
+    Caption = 'Stop'
     TabOrder = 6
     OnClick = btnStopClick
   end
@@ -281,14 +279,14 @@ object frmOptions: TfrmOptions
     Top = 504
     Width = 57
     Height = 25
-    Caption = #1054#1073#1085#1091#1083#1080#1090#1100
+    Caption = 'Reset'
     TabOrder = 7
     OnClick = btnClearClick
   end
   object MainMenu: TMainMenu
     Left = 160
     object N1: TMenuItem
-      Caption = #1052#1077#1085#1102
+      Caption = 'Menu'
       object N2: TMenuItem
         Bitmap.Data = {
           EE030000424DEE03000000000000360000002800000012000000110000000100
@@ -323,7 +321,7 @@ object frmOptions: TfrmOptions
           633600D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+        Caption = 'About'
         ShortCut = 112
         OnClick = N2Click
       end
@@ -358,7 +356,7 @@ object frmOptions: TfrmOptions
           D8E9ECD8E9EC8F6F1C8F6F1C8F6F1CD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9EC000000D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8
           E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000}
-        Caption = #1042#1099#1093#1086#1076
+        Caption = 'Exit'
         ShortCut = 16472
         OnClick = N4Click
       end

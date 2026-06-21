@@ -2,7 +2,7 @@ object frmLibMain: TfrmLibMain
   Left = 277
   Top = 168
   BorderStyle = bsSizeToolWin
-  Caption = #1047#1072#1076#1072#1095#1072' '#1050#1077#1087#1083#1077#1088#1072
+  Caption = 'Kepler problem'
   ClientHeight = 438
   ClientWidth = 678
   Color = clBtnFace

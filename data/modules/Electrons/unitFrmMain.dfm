@@ -3,7 +3,7 @@ object frmLibMain: TfrmLibMain
   Top = 125
   Cursor = crSizeWE
   BorderStyle = bsSizeToolWin
-  Caption = #1069#1083#1077#1082#1090#1088#1086#1085#1099' '#1074' '#1101#1083#1077#1082#1090#1088#1080#1095#1077#1089#1082#1086#1084' '#1087#1086#1083#1077
+  Caption = 'Electrons in an electric field'
   ClientHeight = 438
   ClientWidth = 678
   Color = clBtnFace

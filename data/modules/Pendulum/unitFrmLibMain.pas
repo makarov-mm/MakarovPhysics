@@ -1,8 +1,5 @@
 {
-Программа: Математический маятник
-Разработчик: Макаров М.М.
-Дата создания: 25 ноября 2004
-Среда разработки: Delphi7
+Program: Mathematical pendulum\nAuthor: M.M. Makarov\nCreated: November 25, 2004\nIDE: Delphi 7
 }
 unit unitFrmLibMain;
 
@@ -22,29 +19,29 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
   private
-    CallerForm: THandle;{вызывающая форма}
-    DC: HDC;{контекст устройства}
-    HRC: HGLRC;{контекст воспроизведения OpenGL}
+    CallerForm: THandle;{calling form}
+    DC: HDC;{device context}
+    HRC: HGLRC;{OpenGL rendering context}
     ps: TPaintStruct;
     pfd: TPixelFormatDescriptor;
-    QuadObj: GLUquadricObj;{quadric-Объект}
+    QuadObj: GLUquadricObj;{quadric object}
     procedure SetDefaultWindowPosition;
     procedure SetDCPixelFormat;
     procedure DrawGrid;
     procedure Calculate;
     procedure DrawGraphic;
   public
-    IsRun: Boolean;{ведутся ли расчёты}
-    Angle,{угол}
-    preSpeed,Speed,{угловая скорость}
-    Accel,{угловое ускорение}
-    Len,{длина}
-    g: Extended;{ускорение свободного падения}
-    AngleArray,{массив углов}
-    SpeedArray,{массив скоростей}
-    AccelArray: Array[1..250] of Extended;{массив ускорений}
-    MyTime: Integer;{милисекунды в нашем времени}
-    Period: Extended;{период колебаний}
+    IsRun: Boolean;{whether calculations are running}
+    Angle,{angle}
+    preSpeed,Speed,{angular speed}
+    Accel,{angular acceleration}
+    Len,{length}
+    g: Extended;{free-fall acceleration}
+    AngleArray,{array of angles}
+    SpeedArray,{array of speeds}
+    AccelArray: Array[1..250] of Extended;{array of accelerations}
+    MyTime: Integer;{milliseconds in our time}
+    Period: Extended;{oscillation period}
     infotimer: Integer;
   end;
 
@@ -60,7 +57,7 @@ uses unitFrmPhaseTraectory;
 {$R *.dfm}
 
 procedure InitLibrary(App,CallForm:THandle);
-{Инициализация библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
@@ -78,11 +75,11 @@ begin
 end;
 
 procedure TfrmLibMain.DrawGraphic;
-{расчёт и прорисовка графиков}
+{calculation and rendering of graphs}
 var
   i: Integer;
 begin
-  {обновление массивов углов, скоростей и ускорений}
+  {update arrays of angles, speeds and accelerations}
   for i := 1 to 249 do
   begin
     AngleArray[i] := AngleArray[i+1];
@@ -94,23 +91,23 @@ begin
   SpeedArray[250] := Speed;
   AccelArray[250] := Accel;
 
-  {прорисовка графиков}
+  {graphs rendering}
   frmGraph.Chart.Series[0].Clear;
   case frmGraph.tabs.TabIndex of
     0: begin
-         frmGraph.Chart.Title.Text.Text := 'Угол (град)';
+         frmGraph.Chart.Title.Text.Text := 'Angle (deg)';
          for i := 1 to 250 do
            frmGraph.Chart.Series[0].Add(AngleArray[i]);
        end;
 
     1: begin
-         frmGraph.Chart.Title.Text.Text := 'Угловая скорость (град/с)';
+         frmGraph.Chart.Title.Text.Text := 'Angular speed (deg/s)';
          for i := 1 to 250 do
            frmGraph.Chart.Series[0].Add(SpeedArray[i]);
        end;
 
     2: begin
-         frmGraph.Chart.Title.Text.Text := 'Угловое ускорение (град/с^2)';
+         frmGraph.Chart.Title.Text.Text := 'Angular acceleration (deg/s^2)';
          for i := 1 to 250 do
            frmGraph.Chart.Series[0].Add(AccelArray[i]);
        end;
@@ -124,15 +121,15 @@ end;
 procedure ShowInfo;
 begin
   frmResults.txtResult.Text :=
-    'Угол: ' + FloatToStr(frmLibMain.Angle) + ' (град)' + #13#10 +
-    'Угловая скорость: ' + FloatToStr(frmLibMain.Speed) + ' (град/с)' + #13#10 +
-    'Угловое ускорение: ' + FloatToStr(frmLibMain.Accel) + ' (град/с^2)' + #13#10 +
-    'Период колебаний: ' + FloatToStr(frmLibMain.Period / 1000) + ' (с)' + #13#10 +
-    'Частота колебаний: ' + FloatToStr(1 / (frmLibMain.Period / 1000)) + ' (Гц)';
+    'Angle: ' + FloatToStr(frmLibMain.Angle) + ' (deg)' + #13#10 +
+    'Angular speed: ' + FloatToStr(frmLibMain.Speed) + ' (deg/s)' + #13#10 +
+    'Angular acceleration: ' + FloatToStr(frmLibMain.Accel) + ' (deg/s^2)' + #13#10 +
+    'Oscillation period: ' + FloatToStr(frmLibMain.Period / 1000) + ' (s)' + #13#10 +
+    'Oscillation frequency: ' + FloatToStr(1 / (frmLibMain.Period / 1000)) + ' (Hz)';
 end;
 
 procedure TfrmLibMain.DrawGrid;
-{прорисовка сетки}
+{grid rendering}
 var
   i: Integer;
 begin
@@ -153,7 +150,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDCPixelFormat;
-{настройка формата пикселя}
+{pixel format setup}
 var
   nPixelFormat: Integer;
 begin
@@ -166,7 +163,7 @@ begin
 end;
 
 procedure TfrmLibMain.SetDefaultWindowPosition;
-{настройка расположения окон}
+{window layout setup}
 const
   w = 209;
   h = 0.7;
@@ -230,7 +227,7 @@ begin
 end;
 
 procedure TfrmLibMain.Calculate;
-{расчёт движения маятника}
+{pendulum motion calculation}
 const
   dt = 0.00025;
   interval = 160;
@@ -258,8 +255,8 @@ begin
   DrawGraphic;
 end;
 
-procedure Render;
-{рендеринг}
+procedure Render(AHwnd: HWND; AMsg: UINT; AEvent: UINT_PTR; ATime: DWORD); stdcall;
+{rendering}
 begin
   wglMakeCurrent(frmLibMain.DC,frmLibMain.HRC);
 
@@ -271,28 +268,28 @@ begin
     glLoadIdentity;
     glTranslatef(0, 0, -10);
 
-    {прорисовка сетки}
+    {grid rendering}
     if frmOptions.cbShowGrid.Checked then
       DrawGrid;
 
-    {расчёт движения}
+    {motion calculation}
     if IsRun then
       frmLibMain.Calculate;
 
-    {прорисовка сферы в месте крепления маятника}
+    {rendering of the sphere at the pendulum attachment point}
     glPushMatrix;
     glTranslatef(0, 2.2, 0);
     gluSphere(QuadObj, 0.1, 20, 20);
     glPopMatrix;
 
-    {прорисовка груза маятника}
+    {pendulum weight rendering}
     glPushMatrix;
     glTranslatef(Len * sin(DegToRad(Angle)),
                  -Len * cos(DegToRad(Angle)) + 2.2, 0);
     gluSphere(QuadObj, 0.1, 20, 20);
     glPopMatrix;
 
-    {прорисовка нити подвеса}
+    {suspension thread rendering}
     glDisable(GL_LIGHTING);
     glColor3f(1, 1, 1);
     glBegin(GL_LINES);
@@ -301,7 +298,7 @@ begin
     glEnd;
     glEnable(GL_LIGHTING);
 
-    {вывод информации}
+    {information output}
     inc(infotimer);
     if infotimer > 5 then
     begin
@@ -324,13 +321,13 @@ procedure TfrmLibMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   wglMakeCurrent(DC,HRC);
 
-  {останов таймера}
+  {stop timer}
   KillTimer(Handle, 100);
 
-  {удаление quadric-объектов}
+  {removing quadric objects}
   gluDeleteQuadric(QuadObj);
 
-  {завершение работы с OpenGL}
+  {OpenGL shutdown}
   wglMakeCurrent(0, 0);
   wglDeleteContext(HRC);
   ReleaseDC(Handle, DC);
@@ -347,7 +344,7 @@ begin
   MyTime := 0;
   Period := 1;
 
-  {инициализация OpenGL}
+  {OpenGL initialization}
   DC := GetDC(Handle);
   SetDCPixelFormat;
   HRC := wglCreateContext(DC);
@@ -356,12 +353,12 @@ begin
   glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
 
-  {создание quadric-объектов}
+  {creating quadric objects}
   QuadObj := gluNewQuadric;
   gluQuadricDrawStyle(QuadObj, GLU_FILL);
   gluQuadricOrientation(QuadObj, GLU_OUTSIDE);
 
-  {запуск таймера}
+  {start timer}
   SetTimer(Handle, 100, 40, @Render);
 end;
 

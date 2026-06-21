@@ -53,10 +53,6 @@ begin
   if frmAbout.lblDesigner.Width > maxlen then
     maxlen := frmAbout.lblDesigner.Width;
 
-  if frmAbout.lblLink.Width > maxlen then
-    maxlen := frmAbout.lblLink.Width;
-
-  frmAbout.ClientWidth := frmAbout.lblLink.Left + maxlen + 10;
   frmAbout.btnClose.Left := (frmAbout.ClientWidth - frmAbout.btnClose.Width) div 2;
 
   frmAbout.Left := (Screen.Width - frmAbout.Width) div 2;

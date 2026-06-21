@@ -2,7 +2,7 @@ object frmLibMain: TfrmLibMain
   Left = 253
   Top = 110
   BorderStyle = bsSizeToolWin
-  Caption = #1055#1086#1083#1105#1090' '#1088#1072#1082#1077#1090#1099
+  Caption = 'Rocket flight'
   ClientHeight = 529
   ClientWidth = 684
   Color = clBtnFace

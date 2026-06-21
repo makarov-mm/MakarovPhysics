@@ -2,7 +2,7 @@ object frmOptions: TfrmOptions
   Left = 191
   Top = 72
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 610
   ClientWidth = 193
   Color = clBtnFace
@@ -125,14 +125,14 @@ object frmOptions: TfrmOptions
     Top = 120
     Width = 177
     Height = 97
-    Caption = #1057#1080#1083#1086#1074#1099#1077' '#1083#1080#1085#1080#1080
+    Caption = 'Field lines'
     TabOrder = 0
     object lblLinesPerQ: TLabel
       Left = 8
       Top = 40
       Width = 143
       Height = 13
-      Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1083#1080#1085#1080#1081' '#1085#1072' '#1079#1072#1088#1103#1076':'
+      Caption = 'Lines per charge:'
     end
     object lblLinesPerQCount: TLabel
       Left = 157
@@ -147,7 +147,7 @@ object frmOptions: TfrmOptions
       Top = 16
       Width = 161
       Height = 17
-      Caption = #1057#1090#1088#1086#1080#1090#1100' '#1083#1080#1085#1080#1080
+      Caption = 'Draw lines'
       Checked = True
       State = cbChecked
       TabOrder = 0
@@ -170,14 +170,14 @@ object frmOptions: TfrmOptions
     Top = 8
     Width = 177
     Height = 105
-    Caption = #1047#1072#1088#1103#1076#1099
+    Caption = 'Charges'
     TabOrder = 1
     object lblQCount: TLabel
       Left = 8
       Top = 16
       Width = 107
       Height = 13
-      Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1079#1072#1088#1103#1076#1086#1074':'
+      Caption = 'Number of charges:'
     end
     object lblQCountValue: TLabel
       Left = 163
@@ -203,7 +203,7 @@ object frmOptions: TfrmOptions
       Top = 64
       Width = 161
       Height = 17
-      Caption = #1063#1077#1088#1077#1076#1086#1074#1072#1085#1080#1077' '#1079#1085#1072#1082#1086#1074
+      Caption = 'Alternating signs'
       Checked = True
       TabOrder = 1
       TabStop = True
@@ -213,7 +213,7 @@ object frmOptions: TfrmOptions
       Top = 80
       Width = 161
       Height = 17
-      Caption = #1054#1076#1080#1085#1072#1082#1086#1074#1099#1077' '#1079#1085#1072#1082#1080
+      Caption = 'Same signs'
       TabOrder = 2
     end
   end
@@ -222,7 +222,7 @@ object frmOptions: TfrmOptions
     Top = 320
     Width = 121
     Height = 25
-    Caption = #1056#1072#1089#1089#1095#1080#1090#1072#1090#1100
+    Caption = 'Calculate'
     TabOrder = 2
   end
   object groupDistance: TGroupBox
@@ -230,7 +230,7 @@ object frmOptions: TfrmOptions
     Top = 224
     Width = 177
     Height = 57
-    Caption = #1052#1072#1089#1096#1090#1072#1073
+    Caption = 'Scale'
     TabOrder = 3
     object tbDistance: TTrackBar
       Left = 8

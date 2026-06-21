@@ -3,7 +3,7 @@ object frmVideoInfo: TfrmVideoInfo
   Top = 159
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1074#1080#1076#1077#1086#1082#1072#1088#1090#1077' '#1080' OpenGL'
+  Caption = 'Video card and OpenGL information'
   ClientHeight = 449
   ClientWidth = 392
   Color = clBtnFace
@@ -127,7 +127,7 @@ object frmVideoInfo: TfrmVideoInfo
     Top = 8
     Width = 82
     Height = 13
-    Caption = #1055#1088#1086#1080#1079#1074#1086#1076#1080#1090#1077#1083#1100':'
+    Caption = 'Vendor:'
   end
   object Label2: TLabel
     Left = 8
@@ -141,21 +141,21 @@ object frmVideoInfo: TfrmVideoInfo
     Top = 88
     Width = 40
     Height = 13
-    Caption = #1042#1077#1088#1089#1080#1103':'
+    Caption = 'Version:'
   end
   object Label4: TLabel
     Left = 8
     Top = 136
     Width = 66
     Height = 13
-    Caption = #1056#1072#1089#1096#1080#1088#1077#1085#1080#1103':'
+    Caption = 'Extensions:'
   end
   object Label5: TLabel
     Left = 8
     Top = 24
     Width = 91
     Height = 16
-    Caption = #1053#1077#1080#1079#1074#1077#1089#1090#1085#1086
+    Caption = 'Unknown'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clMaroon
     Font.Height = -13
@@ -168,7 +168,7 @@ object frmVideoInfo: TfrmVideoInfo
     Top = 64
     Width = 91
     Height = 16
-    Caption = #1053#1077#1080#1079#1074#1077#1089#1090#1085#1086
+    Caption = 'Unknown'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clMaroon
     Font.Height = -13
@@ -181,7 +181,7 @@ object frmVideoInfo: TfrmVideoInfo
     Top = 104
     Width = 91
     Height = 16
-    Caption = #1053#1077#1080#1079#1074#1077#1089#1090#1085#1086
+    Caption = 'Unknown'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clMaroon
     Font.Height = -13

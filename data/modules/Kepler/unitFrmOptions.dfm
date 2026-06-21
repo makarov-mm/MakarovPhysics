@@ -2,7 +2,7 @@ object frmOptions: TfrmOptions
   Left = 132
   Top = 69
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 645
   ClientWidth = 193
   Color = clBtnFace
@@ -116,17 +116,15 @@ object frmOptions: TfrmOptions
     003F8000003F8000003F8000003F8000003F8000003FC000003FE000003FF000
     003FF800007FFC0001FFFE0007FFFF001FFFFF807FFFFFC1FFFFFFE7FFFF}
   Menu = MainMenu
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
-  PixelsPerInch = 96
   TextHeight = 13
   object groupParams: TGroupBox
     Left = 8
     Top = 8
     Width = 177
     Height = 225
-    Caption = #1053#1072#1095#1072#1083#1100#1085#1099#1077' '#1087#1072#1088#1072#1084#1077#1090#1088#1099
+    Caption = 'Initial parameters'
     TabOrder = 0
     object txtPlanetMass: TLabeledEdit
       Left = 8
@@ -135,7 +133,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 139
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1087#1083#1072#1085#1077#1090#1099' ('#1082#1075' *10^20):'
+      EditLabel.Caption = 'Planet mass (kg *10^20):'
       TabOrder = 0
       Text = '59760'
     end
@@ -146,7 +144,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 79
       EditLabel.Height = 13
-      EditLabel.Caption = #1057#1082#1086#1088#1086#1089#1090#1100' ('#1084'/'#1089'):'
+      EditLabel.Caption = 'Speed (m/s):'
       TabOrder = 1
       Text = '6500'
     end
@@ -157,7 +155,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 58
       EditLabel.Height = 13
-      EditLabel.Caption = #1042#1099#1089#1086#1090#1072' ('#1084'):'
+      EditLabel.Caption = 'Height (m):'
       TabOrder = 2
       Text = '10000000'
     end
@@ -168,7 +166,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 102
       EditLabel.Height = 13
-      EditLabel.Caption = #1056#1072#1076#1080#1091#1089' '#1087#1083#1072#1085#1077#1090#1099' ('#1084'):'
+      EditLabel.Caption = 'Planet radius (m):'
       TabOrder = 3
       Text = '3600000'
     end
@@ -179,7 +177,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 101
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1086#1073#1098#1077#1082#1090#1072' ('#1082#1075'):'
+      EditLabel.Caption = 'Object mass (kg):'
       TabOrder = 4
       Text = '1'
     end
@@ -189,21 +187,21 @@ object frmOptions: TfrmOptions
     Top = 240
     Width = 177
     Height = 225
-    Caption = #1042#1080#1079#1091#1072#1083#1080#1079#1072#1094#1080#1103
+    Caption = 'Visualization'
     TabOrder = 1
     object lblDistance: TLabel
       Left = 8
       Top = 24
       Width = 59
       Height = 13
-      Caption = #1044#1080#1089#1090#1072#1085#1094#1080#1103':'
+      Caption = 'Distance:'
     end
     object lblTime: TLabel
       Left = 8
       Top = 80
       Width = 36
       Height = 13
-      Caption = #1042#1088#1077#1084#1103':'
+      Caption = 'Time:'
     end
     object lblTimeX1000: TLabel
       Left = 130
@@ -224,7 +222,7 @@ object frmOptions: TfrmOptions
       Top = 136
       Width = 84
       Height = 13
-      Caption = #1056#1072#1076#1080#1091#1089' '#1086#1073#1098#1077#1082#1090#1072':'
+      Caption = 'Object radius:'
     end
     object tbDistance: TTrackBar
       Left = 8
@@ -242,7 +240,7 @@ object frmOptions: TfrmOptions
       Top = 200
       Width = 153
       Height = 17
-      Caption = #1058#1088#1072#1077#1082#1090#1086#1088#1080#1103
+      Caption = 'Trajectory'
       Checked = True
       State = cbChecked
       TabOrder = 1
@@ -275,7 +273,7 @@ object frmOptions: TfrmOptions
     Top = 472
     Width = 81
     Height = 25
-    Caption = #1055#1091#1089#1082'!'
+    Caption = 'Start!'
     TabOrder = 2
     OnClick = btnStartClick
   end
@@ -284,7 +282,7 @@ object frmOptions: TfrmOptions
     Top = 472
     Width = 81
     Height = 25
-    Caption = #1057#1090#1086#1087
+    Caption = 'Stop'
     TabOrder = 3
     OnClick = btnStopClick
   end
@@ -292,7 +290,7 @@ object frmOptions: TfrmOptions
     Left = 8
     Top = 504
     object N1: TMenuItem
-      Caption = #1052#1077#1085#1102
+      Caption = 'Menu'
       object N2: TMenuItem
         Bitmap.Data = {
           EE030000424DEE03000000000000360000002800000012000000110000000100
@@ -327,7 +325,7 @@ object frmOptions: TfrmOptions
           633600D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+        Caption = 'About'
         ShortCut = 112
         OnClick = N2Click
       end
@@ -362,7 +360,7 @@ object frmOptions: TfrmOptions
           D8E9ECD8E9EC8F6F1C8F6F1C8F6F1CD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9EC000000D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8
           E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000}
-        Caption = #1042#1099#1093#1086#1076
+        Caption = 'Exit'
         ShortCut = 16472
         OnClick = N4Click
       end

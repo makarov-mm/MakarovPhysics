@@ -1,8 +1,5 @@
 {
-Программа: Полёт ракеты
-Разработчик: Макаров М.М.
-Дата создания: Ноябрь 2004 года
-Среда разработки: Delphi 7
+Program: Rocket flight\nAuthor: M.M. Makarov\nCreated: November 2004\nIDE: Delphi 7
 }
 unit unitFrmOptions;
 
@@ -10,7 +7,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, StdCtrls, ExtCtrls, unitFrmResults, unitFrmGraphics;
+  Dialogs, Menus, StdCtrls, ExtCtrls, unitFrmResults, unitFrmGraphics, Vcl.Mask;
 
 type
   TfrmOptions = class(TForm)
@@ -68,15 +65,15 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmOptions.N2Click(Sender: TObject);
 begin
-  About('Реактивное движение',
-    'Дата создания: ноябрь 2004 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Reactive motion',
+    'Created: November 2004',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 
@@ -113,7 +110,7 @@ begin
     i := StrToFloat(txtFuelMass3.Text);
   except
     t := False;
-    MessageBox(Handle, 'Введены неправильные значения', 'Ошибка', 0);
+    MessageBox(Handle, 'Invalid values entered', 'Error', 0);
   end;
   if t then
   begin

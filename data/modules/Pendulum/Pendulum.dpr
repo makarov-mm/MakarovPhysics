@@ -1,8 +1,5 @@
 {
-Программа: Математический маятник
-Разработчик: Макаров М.М.
-Дата создания: 25 ноября 2004
-Среда разработки: Delphi7
+Program: Mathematical pendulum\nAuthor: M.M. Makarov\nCreated: November 25, 2004\nIDE: Delphi 7
 }
 library Pendulum;
 

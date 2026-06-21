@@ -41,9 +41,9 @@ end;
 procedure TfrmGraphics.tabsChange(Sender: TObject);
 begin
   case tabs.TabIndex of
-    0: Chart.Title.Text.Text := '—мещение (м)';
-    1: Chart.Title.Text.Text := '—корость (м/с)';
-    2: Chart.Title.Text.Text := '”скорение (м/с^2)';
+    0: Chart.Title.Text.Text := 'Displacement (m)';
+    1: Chart.Title.Text.Text := 'Speed (m/s)';
+    2: Chart.Title.Text.Text := 'Acceleration (m/s^2)';
   end;
 end;
 

@@ -1,18 +1,16 @@
 unit unitFrmLibMain;
 {
-программа: колебани€ водной поверхности
-разработчик: ћакаров ћ.ћ.
-дата создани€: 2 марта 2005
+program: water surface oscillations\nauthor: M.M. Makarov\ncreated: March 2, 2005
 }
 
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, OpenGL, ExtCtrls, MyEngine;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, OpenGL, Vcl.ExtCtrls, MyEngine;
 
 type
-  TField = Array[-50..50, -50..50] of Extended;//высота
+  TField = Array[-50..50, -50..50] of Extended;//height
   TfrmLibMain = class(TForm)
     RenderTimer: TTimer;
     procedure FormCanResize(Sender: TObject; var NewWidth, NewHeight: Integer;
@@ -30,13 +28,13 @@ type
       Y: Integer);
   private
     CallerForm: THandle;
-    DC: HDC;//контекст устройтсва
-    HRC: HGLRC;//контекст рендеринга OpenGL
+    DC: HDC;//device context
+    HRC: HGLRC;//OpenGL rendering context
     ps: TPaintStruct;
-    preX, preY: Integer;//предыдуща€ позици€ мышки
-    IsMouseDown: Boolean;//нажата ли кнопка мыши
-    ay: Single;//угол поворота
-    ax: Single;//угол поворота по вертикали
+    preX, preY: Integer;//previous mouse position
+    IsMouseDown: Boolean;//whether a mouse button is pressed
+    ay: Single;//rotation angle
+    ax: Single;//vertical rotation angle
     procedure Calc;
     procedure DrawQuad(x1, y1, z1,
                        x2, y2, z2,
@@ -46,9 +44,9 @@ type
     procedure SetDefWindowsPos;
   public
     A, B: TField;
-    n, n1: Array[-50..50, -50..50, 1..3] of Extended;//нормали
-    vis: Single;//в€зкость
-    Ydef: Single;//смещение по Y
+    n, n1: Array[-50..50, -50..50, 1..3] of Extended;//normals
+    vis: Single;//viscosity
+    Ydef: Single;//Y displacement
   end;
 
 var
@@ -63,7 +61,7 @@ uses unitFrmOptions;
 {$R *.dfm}
 
 procedure TfrmLibMain.SetDefWindowsPos;
-{расположение окон}
+{window layout}
 const
   dw = 209;
 begin
@@ -86,7 +84,7 @@ begin
 end;
 
 procedure InitLibrary(App, CallForm:THandle);
-{»нициализаци€ библиотеки}
+{Library initialization}
 begin
   Application.Handle := App;
   frmLibMain := TfrmLibMain.Create(Application);
@@ -102,7 +100,7 @@ begin
 end;
 
 procedure TfrmLibMain.FormClose(Sender: TObject; var Action: TCloseAction);
-{завершение работы модул€}
+{module shutdown}
 begin
   RenderTimer.Enabled := False;
   frmOptions.Destroy;
@@ -119,7 +117,7 @@ procedure TfrmLibMain.DrawQuad(x1, y1, z1,
                                x3, y3, z3,
                                x4, y4, z4: Single;
                                ii, jj: Integer);
-{прорисовка полигона}
+{polygon rendering}
 var
   i, j, k: Single;
 begin
@@ -148,13 +146,13 @@ begin
 end;
 
 procedure TfrmLibMain.Calc;
-{вычислени€}
+{calculations}
 var
   i, j, k: Integer;
   laplas: Single;
   C: TField;
 begin
-  //расчЄт колебаний
+  //oscillation calculation
   if frmOptions.rb1.Checked then glBindTexture(GL_TEXTURE_2D, 1);
   if frmOptions.rb2.Checked then glBindTexture(GL_TEXTURE_2D, 8);
   if frmOptions.rb3.Checked then glBindTexture(GL_TEXTURE_2D, 9);
@@ -170,13 +168,13 @@ begin
   for i := -50 to 49 do
     for j := -50 to 49 do
     begin
-      //расчЄт нормалей
+      //normals calculation
       CalcNormal(i + 1, B[i + 1, j + 1], j + 1,
                  i + 1, B[i + 1, j],j,
                  i, B[i, j], j,
                  n[i, j, 1], n[i, j, 2], n[i, j, 3]);
     end;
-  //усреднение нормалей
+  //normals averaging
   for i := -49 to 49 do
     for j := -49 to 49 do
       for k := 1 to 3 do
@@ -184,7 +182,7 @@ begin
                       n[i - 1, j, k] +
                       n[i, j + 1, k] +
                       n[i, j - 1, k]) / 4 - n[i, j, k];
-  //прорисоска
+  //rendering
   for i := -47 to 47 do
     for j := -47 to 47 do
       DrawQuad(i, B[i, j], j,
@@ -192,7 +190,7 @@ begin
                i + 1,B[i + 1, j + 1], j + 1,
                i, B[i, j + 1], j + 1,
                i, j);
-  //вычислени€
+  //calculations
   for i := -49 to 49 do
     for j := -49 to 49 do
     begin
@@ -212,17 +210,17 @@ begin
   glClear(GL_COLOR_BUFFER_BIT or
           GL_DEPTH_BUFFER_BIT);
 
-  //инициаци€ колебаний
+  //oscillation initiation
   if Random(100) > 85 then
     frmLibMain.A[Random(90) - 45,Random(90) - 45] := frmLibMain.Ydef;
 
-  //текстурирование
+  //texturing
   if frmOptions.CheckBox1.Checked then
     glEnable(GL_TEXTURE_2D)
   else
     glDisable(GL_TEXTURE_2D);
 
-  //освещение
+  //lighting
   if frmOptions.cbLighting.Checked then
     glEnable(GL_LIGHTING)
   else

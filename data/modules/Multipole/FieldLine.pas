@@ -8,15 +8,13 @@ uses
 type
   TFieldLine = class
   private
-    LineType:Boolean;{тип линий:
-                      true - силовые линии поля
-                      false - эквипотенциальные поверхности}
-    QPosition:array of record {массив зарядов}
-                x,y:Extended;{позиция}
-                q:Extended;{заряд}
+    LineType:Boolean;{line type:\n                      true - field force lines\n                      false - equipotential surfaces}
+    QPosition:array of record {array of charges}
+                x,y:Extended;{position}
+                q:Extended;{charge}
               end;
-    NumbOfQ:Integer;{количество зарядов}
-    NumbOfLines:Integer;{количество линий}
+    NumbOfQ:Integer;{number of charges}
+    NumbOfLines:Integer;{number of lines}
     ArrayOfLines:array of record
       x,y:Extended;
     end;
@@ -41,7 +39,7 @@ begin
 end;
 
 procedure TFieldLine.AddQ(x,y,q:Extended);
-{добавить заряд}
+{add charge}
 begin
   inc(NumbOfQ);
   SetLength(QPosition,NumbOfQ);
@@ -51,7 +49,7 @@ begin
 end;
 
 procedure TFieldLine.Render;
-{рендеринг линии поля}
+{field line rendering}
 var
   i:Integer;
 begin
@@ -64,7 +62,7 @@ begin
 end;
 
 procedure TFieldLine.Calculate;
-{расчёт линии поля}
+{field line calculation}
 const
   MaxLines=10000;
   dL=0.01;

@@ -1,8 +1,6 @@
 unit Unit1;
 {
-программа для отображения иформации о видеокарте и OpenGL
-разработчик: Макаров М.М.
-дата создания: 20.II.2005
+program that displays video card and OpenGL information\nauthor: M.M. Makarov\ncreated: 20.II.2005
 }
 
 interface
@@ -87,10 +85,10 @@ procedure TfrmVideoInfo.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key=VK_F1 then
-    MessageBox(Handle,'Информация о видеокарте и OpenGL'#13#10+
-                      'Разработчик программы: Макаров М.М.'#13#10+
-                      'Дата создания: 16 февраля 2005'#13#10+
-                      'Версия: 1.0','О программе',MB_OK);
+    MessageBox(Handle,'Video card and OpenGL information'#13#10+
+                      'Program author: M.M. Makarov'#13#10+
+                      'Created: February 16, 2005'#13#10+
+                      'Version: 1.0','About',MB_OK);
 end;
 
 end.

@@ -2,7 +2,7 @@ object frmPhaseTraectory: TfrmPhaseTraectory
   Left = 192
   Top = 114
   BorderStyle = bsSizeToolWin
-  Caption = #1060#1072#1079#1086#1074#1072#1103' '#1090#1088#1072#1077#1082#1090#1086#1088#1080#1103
+  Caption = 'Phase trajectory'
   ClientHeight = 436
   ClientWidth = 678
   Color = clBtnFace
@@ -130,9 +130,9 @@ object frmPhaseTraectory: TfrmPhaseTraectory
     Title.Text.Strings = (
       #1052#1072#1103#1090#1085#1080#1082' 1')
     BottomAxis.Labels = False
-    BottomAxis.Title.Caption = #1059#1075#1086#1083' ('#1075#1088#1072#1076')'
+    BottomAxis.Title.Caption = 'Angle (deg)'
     LeftAxis.Labels = False
-    LeftAxis.Title.Caption = 'C'#1082#1086#1088#1086#1089#1090#1100' ('#1075#1088#1072#1076'/'#1089')'
+    LeftAxis.Title.Caption = 'Speed (deg/s)'
     Legend.Visible = False
     View3D = False
     BevelOuter = bvNone
@@ -167,9 +167,9 @@ object frmPhaseTraectory: TfrmPhaseTraectory
     Title.Text.Strings = (
       #1052#1072#1103#1090#1085#1080#1082' 2')
     BottomAxis.Labels = False
-    BottomAxis.Title.Caption = #1059#1075#1086#1083' ('#1075#1088#1072#1076')'
+    BottomAxis.Title.Caption = 'Angle (deg)'
     LeftAxis.Labels = False
-    LeftAxis.Title.Caption = 'C'#1082#1086#1088#1086#1089#1090#1100' ('#1075#1088#1072#1076'/'#1089')'
+    LeftAxis.Title.Caption = 'Speed (deg/s)'
     Legend.Visible = False
     View3D = False
     BevelOuter = bvNone

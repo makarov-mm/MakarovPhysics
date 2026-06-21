@@ -1,0 +1,180 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4F1B0A2C-9D3E-4C7A-8B1F-2E6D5A0C7B33}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="data\engine\engine.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\MakarovTools\MakarovTools.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\Rocket\Rocket.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\Oscillator\Oscillator.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\Kepler\Kepler.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\Multipole\Multipole.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\Electrons\Electrons.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\WaterWaves\WaterWaves.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\Rain\Rain.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\SpringPendulum\SpringPendulum.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\Pendulum\Pendulum.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="data\modules\DoublePendulum\DoublePendulum.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="physic.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="engine">
+        <MSBuild Projects="data\engine\engine.dproj"/>
+    </Target>
+    <Target Name="engine:Clean">
+        <MSBuild Projects="data\engine\engine.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="engine:Make">
+        <MSBuild Projects="data\engine\engine.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MakarovTools">
+        <MSBuild Projects="data\MakarovTools\MakarovTools.dproj"/>
+    </Target>
+    <Target Name="MakarovTools:Clean">
+        <MSBuild Projects="data\MakarovTools\MakarovTools.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MakarovTools:Make">
+        <MSBuild Projects="data\MakarovTools\MakarovTools.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Rocket">
+        <MSBuild Projects="data\modules\Rocket\Rocket.dproj"/>
+    </Target>
+    <Target Name="Rocket:Clean">
+        <MSBuild Projects="data\modules\Rocket\Rocket.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Rocket:Make">
+        <MSBuild Projects="data\modules\Rocket\Rocket.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Oscillator">
+        <MSBuild Projects="data\modules\Oscillator\Oscillator.dproj"/>
+    </Target>
+    <Target Name="Oscillator:Clean">
+        <MSBuild Projects="data\modules\Oscillator\Oscillator.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Oscillator:Make">
+        <MSBuild Projects="data\modules\Oscillator\Oscillator.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Kepler">
+        <MSBuild Projects="data\modules\Kepler\Kepler.dproj"/>
+    </Target>
+    <Target Name="Kepler:Clean">
+        <MSBuild Projects="data\modules\Kepler\Kepler.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Kepler:Make">
+        <MSBuild Projects="data\modules\Kepler\Kepler.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Multipole">
+        <MSBuild Projects="data\modules\Multipole\Multipole.dproj"/>
+    </Target>
+    <Target Name="Multipole:Clean">
+        <MSBuild Projects="data\modules\Multipole\Multipole.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Multipole:Make">
+        <MSBuild Projects="data\modules\Multipole\Multipole.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Electrons">
+        <MSBuild Projects="data\modules\Electrons\Electrons.dproj"/>
+    </Target>
+    <Target Name="Electrons:Clean">
+        <MSBuild Projects="data\modules\Electrons\Electrons.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Electrons:Make">
+        <MSBuild Projects="data\modules\Electrons\Electrons.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WaterWaves">
+        <MSBuild Projects="data\modules\WaterWaves\WaterWaves.dproj"/>
+    </Target>
+    <Target Name="WaterWaves:Clean">
+        <MSBuild Projects="data\modules\WaterWaves\WaterWaves.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WaterWaves:Make">
+        <MSBuild Projects="data\modules\WaterWaves\WaterWaves.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Rain">
+        <MSBuild Projects="data\modules\Rain\Rain.dproj"/>
+    </Target>
+    <Target Name="Rain:Clean">
+        <MSBuild Projects="data\modules\Rain\Rain.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Rain:Make">
+        <MSBuild Projects="data\modules\Rain\Rain.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpringPendulum">
+        <MSBuild Projects="data\modules\SpringPendulum\SpringPendulum.dproj"/>
+    </Target>
+    <Target Name="SpringPendulum:Clean">
+        <MSBuild Projects="data\modules\SpringPendulum\SpringPendulum.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpringPendulum:Make">
+        <MSBuild Projects="data\modules\SpringPendulum\SpringPendulum.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Pendulum">
+        <MSBuild Projects="data\modules\Pendulum\Pendulum.dproj"/>
+    </Target>
+    <Target Name="Pendulum:Clean">
+        <MSBuild Projects="data\modules\Pendulum\Pendulum.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Pendulum:Make">
+        <MSBuild Projects="data\modules\Pendulum\Pendulum.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DoublePendulum">
+        <MSBuild Projects="data\modules\DoublePendulum\DoublePendulum.dproj"/>
+    </Target>
+    <Target Name="DoublePendulum:Clean">
+        <MSBuild Projects="data\modules\DoublePendulum\DoublePendulum.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DoublePendulum:Make">
+        <MSBuild Projects="data\modules\DoublePendulum\DoublePendulum.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="physic">
+        <MSBuild Projects="physic.dproj"/>
+    </Target>
+    <Target Name="physic:Clean">
+        <MSBuild Projects="physic.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="physic:Make">
+        <MSBuild Projects="physic.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="engine;MakarovTools;Rocket;Oscillator;Kepler;Multipole;Electrons;WaterWaves;Rain;SpringPendulum;Pendulum;DoublePendulum;physic"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="engine:Clean;MakarovTools:Clean;Rocket:Clean;Oscillator:Clean;Kepler:Clean;Multipole:Clean;Electrons:Clean;WaterWaves:Clean;Rain:Clean;SpringPendulum:Clean;Pendulum:Clean;DoublePendulum:Clean;physic:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="engine:Make;MakarovTools:Make;Rocket:Make;Oscillator:Make;Kepler:Make;Multipole:Make;Electrons:Make;WaterWaves:Make;Rain:Make;SpringPendulum:Make;Pendulum:Make;DoublePendulum:Make;physic:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

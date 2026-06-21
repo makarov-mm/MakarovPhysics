@@ -2,7 +2,7 @@ object frmLibMain: TfrmLibMain
   Left = 257
   Top = 216
   BorderStyle = bsSizeToolWin
-  Caption = #1055#1088#1091#1078#1080#1085#1085#1099#1081' '#1084#1072#1103#1090#1085#1080#1082
+  Caption = 'Spring pendulum'
   ClientHeight = 438
   ClientWidth = 678
   Color = clBtnFace
@@ -115,13 +115,11 @@ object frmLibMain: TfrmLibMain
     000FF000000FE0000007E0000007C0000003C000000380000001400000024000
     000280000001C0000003C0000003E0000007E0000007F000000FF000000FF800
     001FFC00003FFE00007FFF0000FFFFC003FFFFF00FFFFFFFFFFFFFFFFFFF}
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object RenderTimer: TTimer
     Enabled = False

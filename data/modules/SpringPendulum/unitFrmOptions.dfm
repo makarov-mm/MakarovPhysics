@@ -2,7 +2,7 @@ object frmOptions: TfrmOptions
   Left = 782
   Top = 86
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 574
   ClientWidth = 200
   Color = clBtnFace
@@ -116,14 +116,12 @@ object frmOptions: TfrmOptions
     003F8000003F8000003F8000003F8000003F8000003FC000003FE000003FF000
     003FF800007FFC0001FFFE0007FFFF001FFFFF807FFFFFC1FFFFFFE7FFFF}
   Menu = MainMenu1
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (
     200
     574)
-  PixelsPerInch = 96
   TextHeight = 13
   object imgT: TImage
     Left = 8
@@ -585,7 +583,7 @@ object frmOptions: TfrmOptions
     Height = 21
     EditLabel.Width = 101
     EditLabel.Height = 13
-    EditLabel.Caption = #1044#1083#1080#1085#1072' '#1087#1088#1091#1078#1080#1085#1099' ('#1084'):'
+    EditLabel.Caption = 'Spring length (m):'
     TabOrder = 0
     Text = '5'
   end
@@ -596,7 +594,7 @@ object frmOptions: TfrmOptions
     Height = 21
     EditLabel.Width = 74
     EditLabel.Height = 13
-    EditLabel.Caption = #1057#1084#1077#1097#1077#1085#1080#1077' ('#1084'):'
+    EditLabel.Caption = 'Displacement (m):'
     TabOrder = 1
     Text = '1'
   end
@@ -607,7 +605,7 @@ object frmOptions: TfrmOptions
     Height = 21
     EditLabel.Width = 87
     EditLabel.Height = 13
-    EditLabel.Caption = #1052#1072#1089#1089#1072' '#1075#1088#1091#1079#1072' ('#1082#1075'):'
+    EditLabel.Caption = 'Weight mass (kg):'
     TabOrder = 2
     Text = '1'
   end
@@ -618,7 +616,7 @@ object frmOptions: TfrmOptions
     Height = 21
     EditLabel.Width = 37
     EditLabel.Height = 13
-    EditLabel.Caption = 'k ('#1085'/'#1084'):'
+    EditLabel.Caption = 'k (N/m):'
     TabOrder = 3
     Text = '1'
   end
@@ -629,7 +627,7 @@ object frmOptions: TfrmOptions
     Height = 21
     EditLabel.Width = 49
     EditLabel.Height = 13
-    EditLabel.Caption = 'g ('#1084'/'#1089'^2):'
+    EditLabel.Caption = 'g (m/s^2):'
     TabOrder = 4
     Text = '9,81'
   end
@@ -638,7 +636,7 @@ object frmOptions: TfrmOptions
     Top = 216
     Width = 81
     Height = 25
-    Caption = #1055#1091#1089#1082'!'
+    Caption = 'Start!'
     TabOrder = 5
     OnClick = btnStartClick
   end
@@ -647,7 +645,7 @@ object frmOptions: TfrmOptions
     Top = 216
     Width = 83
     Height = 25
-    Caption = #1057#1090#1086#1087
+    Caption = 'Stop'
     TabOrder = 6
     OnClick = btnStopClick
   end
@@ -674,7 +672,7 @@ object frmOptions: TfrmOptions
     Left = 160
     Top = 288
     object N1: TMenuItem
-      Caption = #1052#1077#1085#1102
+      Caption = 'Menu'
       object N2: TMenuItem
         Bitmap.Data = {
           9A020000424D9A0200000000000036000000280000000B000000110000000100
@@ -698,7 +696,7 @@ object frmOptions: TfrmOptions
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000D8E9ECD8E9EC007F00D8
           E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000}
-        Caption = #1055#1091#1089#1082'!'
+        Caption = 'Start!'
         ShortCut = 16466
         OnClick = N2Click
       end
@@ -729,7 +727,7 @@ object frmOptions: TfrmOptions
           C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6D8E9ECD8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9EC}
-        Caption = #1057#1090#1086#1087
+        Caption = 'Stop'
         ShortCut = 16467
         OnClick = N3Click
       end
@@ -770,7 +768,7 @@ object frmOptions: TfrmOptions
           633600D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+        Caption = 'About'
         ShortCut = 112
         OnClick = N5Click
       end
@@ -811,7 +809,7 @@ object frmOptions: TfrmOptions
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1042#1099#1093#1086#1076
+        Caption = 'Exit'
         ShortCut = 16472
         OnClick = N7Click
       end

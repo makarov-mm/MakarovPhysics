@@ -2,7 +2,7 @@ object frmTools: TfrmTools
   Left = 191
   Top = 11
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 704
   ClientWidth = 193
   Color = clBtnFace
@@ -116,24 +116,22 @@ object frmTools: TfrmTools
     000280000001C0000003C0000003E0000007E0000007F000000FF000000FF800
     001FFC00003FFE00007FFF0000FFFFC003FFFFF00FFFFFFFFFFFFFFFFFFF}
   Menu = MainMenu
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
-  PixelsPerInch = 96
   TextHeight = 13
   object groupView: TGroupBox
     Left = 8
     Top = 8
     Width = 177
     Height = 201
-    Caption = #1042#1080#1076' '#1084#1072#1103#1090#1085#1080#1082#1072
+    Caption = 'Pendulum type'
     TabOrder = 0
     object lblMassSize: TLabel
       Left = 8
       Top = 88
       Width = 73
       Height = 13
-      Caption = #1056#1072#1079#1084#1077#1088' '#1075#1088#1091#1079#1072':'
+      Caption = 'Weight size:'
     end
     object lblMassSizeValue: TLabel
       Left = 140
@@ -148,7 +146,7 @@ object frmTools: TfrmTools
       Top = 144
       Width = 59
       Height = 13
-      Caption = #1044#1080#1089#1090#1072#1085#1094#1080#1103':'
+      Caption = 'Distance:'
     end
     object lblDistanceValue: TLabel
       Left = 155
@@ -163,7 +161,7 @@ object frmTools: TfrmTools
       Top = 16
       Width = 161
       Height = 17
-      Caption = #1054#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1087#1086#1076#1074#1077#1089
+      Caption = 'Show suspension'
       Checked = True
       State = cbChecked
       TabOrder = 0
@@ -173,7 +171,7 @@ object frmTools: TfrmTools
       Top = 40
       Width = 161
       Height = 17
-      Caption = #1054#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1075#1088#1091#1079
+      Caption = 'Show weight'
       Checked = True
       State = cbChecked
       TabOrder = 1
@@ -205,7 +203,7 @@ object frmTools: TfrmTools
       Top = 64
       Width = 65
       Height = 17
-      Caption = #1057#1077#1090#1082#1072
+      Caption = 'Grid'
       Checked = True
       State = cbChecked
       TabOrder = 4
@@ -216,7 +214,7 @@ object frmTools: TfrmTools
     Top = 216
     Width = 177
     Height = 105
-    Caption = #1052#1072#1103#1090#1085#1080#1082' 1'
+    Caption = 'Pendulum 1'
     TabOrder = 1
     object txtLength1: TLabeledEdit
       Left = 8
@@ -225,7 +223,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 59
       EditLabel.Height = 13
-      EditLabel.Caption = #1044#1083#1080#1085#1072' '#1085#1080#1090#1080
+      EditLabel.Caption = 'Thread length'
       TabOrder = 0
       Text = '2'
     end
@@ -236,7 +234,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 64
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1075#1088#1091#1079#1072
+      EditLabel.Caption = 'Weight mass'
       TabOrder = 1
       Text = '1'
     end
@@ -247,7 +245,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 25
       EditLabel.Height = 13
-      EditLabel.Caption = #1059#1075#1086#1083
+      EditLabel.Caption = 'Angle'
       TabOrder = 2
       Text = '30'
     end
@@ -258,7 +256,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 48
       EditLabel.Height = 13
-      EditLabel.Caption = #1057#1082#1086#1088#1086#1089#1090#1100
+      EditLabel.Caption = 'Speed'
       TabOrder = 3
       Text = '0'
     end
@@ -268,14 +266,14 @@ object frmTools: TfrmTools
     Top = 440
     Width = 177
     Height = 65
-    Caption = #1042#1099#1095#1080#1089#1083#1077#1085#1080#1103
+    Caption = 'Computations'
     TabOrder = 2
     object btnStart: TButton
       Left = 8
       Top = 24
       Width = 49
       Height = 25
-      Caption = #1055#1091#1089#1082'!'
+      Caption = 'Start!'
       TabOrder = 0
       OnClick = btnStartClick
     end
@@ -284,7 +282,7 @@ object frmTools: TfrmTools
       Top = 24
       Width = 49
       Height = 25
-      Caption = #1055#1072#1091#1079#1072
+      Caption = 'Pause'
       TabOrder = 1
       OnClick = btnPauseClick
     end
@@ -293,7 +291,7 @@ object frmTools: TfrmTools
       Top = 24
       Width = 49
       Height = 25
-      Caption = #1057#1090#1086#1087
+      Caption = 'Stop'
       TabOrder = 2
       OnClick = btnStopClick
     end
@@ -303,7 +301,7 @@ object frmTools: TfrmTools
     Top = 328
     Width = 177
     Height = 105
-    Caption = #1052#1072#1103#1090#1085#1080#1082' 2'
+    Caption = 'Pendulum 2'
     TabOrder = 3
     object txtLength2: TLabeledEdit
       Left = 8
@@ -312,7 +310,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 59
       EditLabel.Height = 13
-      EditLabel.Caption = #1044#1083#1080#1085#1072' '#1085#1080#1090#1080
+      EditLabel.Caption = 'Thread length'
       TabOrder = 0
       Text = '2'
     end
@@ -323,7 +321,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 64
       EditLabel.Height = 13
-      EditLabel.Caption = #1052#1072#1089#1089#1072' '#1075#1088#1091#1079#1072
+      EditLabel.Caption = 'Weight mass'
       TabOrder = 1
       Text = '1'
     end
@@ -334,7 +332,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 25
       EditLabel.Height = 13
-      EditLabel.Caption = #1059#1075#1086#1083
+      EditLabel.Caption = 'Angle'
       TabOrder = 2
       Text = '75'
     end
@@ -345,7 +343,7 @@ object frmTools: TfrmTools
       Height = 21
       EditLabel.Width = 48
       EditLabel.Height = 13
-      EditLabel.Caption = #1057#1082#1086#1088#1086#1089#1090#1100
+      EditLabel.Caption = 'Speed'
       TabOrder = 3
       Text = '0'
     end
@@ -354,7 +352,7 @@ object frmTools: TfrmTools
     Left = 8
     Top = 512
     object N1: TMenuItem
-      Caption = #1052#1077#1085#1102
+      Caption = 'Menu'
       object N2: TMenuItem
         Bitmap.Data = {
           EE030000424DEE03000000000000360000002800000012000000110000000100
@@ -389,7 +387,7 @@ object frmTools: TfrmTools
           633600D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+        Caption = 'About'
         ShortCut = 112
         OnClick = N2Click
       end
@@ -430,12 +428,12 @@ object frmTools: TfrmTools
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1042#1099#1093#1086#1076
+        Caption = 'Exit'
         OnClick = N4Click
       end
     end
     object N5: TMenuItem
-      Caption = #1042#1099#1095#1080#1089#1083#1077#1085#1080#1077
+      Caption = 'Computation'
       object N6: TMenuItem
         Bitmap.Data = {
           9A020000424D9A0200000000000036000000280000000B000000110000000100
@@ -459,7 +457,7 @@ object frmTools: TfrmTools
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000D8E9ECD8E9EC007F00D8
           E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000}
-        Caption = #1055#1091#1089#1082'!'
+        Caption = 'Start!'
         OnClick = N6Click
       end
       object N7: TMenuItem
@@ -491,7 +489,7 @@ object frmTools: TfrmTools
           AA7F55AA7F55AA7F55D9A77DD8E9ECD8E9ECD9A77DAA7F55AA7F55AA7F55D9A7
           7DD8E9EC0000D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1055#1072#1091#1079#1072
+        Caption = 'Pause'
         OnClick = N7Click
       end
       object N8: TMenuItem
@@ -521,7 +519,7 @@ object frmTools: TfrmTools
           C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6D8E9ECD8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9EC}
-        Caption = #1057#1090#1086#1087
+        Caption = 'Stop'
         OnClick = N8Click
       end
     end

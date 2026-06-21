@@ -3,8 +3,8 @@ unit unitFrmOptions;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Menus;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus, Vcl.Mask;
 
 type
   TfrmOptions = class(TForm)
@@ -62,7 +62,7 @@ begin
       if (s[i] <> '.') and (s[i] <> ',') then
         Result := Result + s[i]
       else
-        Result := Result + DecimalSeparator;
+        Result := Result + FormatSettings.DecimalSeparator;
 end;
 
 procedure TfrmOptions.N7Click(Sender: TObject);
@@ -128,8 +128,8 @@ begin
         IsRun := True;
       end;
   except
-    MessageBox(Handle, 'Введы неправильные значения',
-               'Ошибка', MB_ICONERROR);
+    MessageBox(Handle, 'Invalid values entered',
+               'Error', MB_ICONERROR);
   end;
 end;
 
@@ -137,9 +137,9 @@ procedure TfrmOptions.btnStopClick(Sender: TObject);
 begin
   frmLibMain.IsRun := False;
   txtDX.Text := preL;
-  frmGraphics.chartDX.Title.Text.Text := 'Смещение (м)';
-  frmGraphics.chartSpeed.Title.Text.Text := 'Скорость (м/c)';
-  frmGraphics.chartAccel.Title.Text.Text := 'Ускорение (м/c^2)';
+  frmGraphics.chartDX.Title.Text.Text := 'Displacement (m)';
+  frmGraphics.chartSpeed.Title.Text.Text := 'Speed (m/s)';
+  frmGraphics.chartAccel.Title.Text.Text := 'Acceleration (m/s^2)';
 end;
 
 procedure TfrmOptions.N2Click(Sender: TObject);
@@ -154,10 +154,10 @@ end;
 
 procedure TfrmOptions.N5Click(Sender: TObject);
 begin
-  About('Пружинный маятник',
-    'Дата создания: 25 декабря 2004 года',
-    'Обновление: 22 декабря 2006 года',
-    'Версия: 1.3',
+  About('Spring pendulum',
+    'Created: December 25, 2004',
+    'Updated: December 22, 2006',
+    'Version: 1.3',
     frmLibMain);
 end;
 

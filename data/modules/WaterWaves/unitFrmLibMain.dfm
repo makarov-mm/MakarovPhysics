@@ -2,7 +2,7 @@ object frmLibMain: TfrmLibMain
   Left = 188
   Top = 84
   BorderStyle = bsSizeToolWin
-  Caption = #1050#1086#1083#1077#1073#1072#1085#1080#1103' '#1074#1086#1076#1085#1086#1081' '#1087#1086#1074#1077#1088#1093#1085#1086#1089#1090#1080
+  Caption = 'Water surface oscillations'
   ClientHeight = 607
   ClientWidth = 782
   Color = clBtnFace
@@ -115,7 +115,6 @@ object frmLibMain: TfrmLibMain
     00078000000380000001800000078000001F8000003F8000003F8000003F8000
     003F8000003F8000003F8000003F8000003F8000003FC000003FE000003FF000
     003FF800007FFC0001FFFE0007FFFF001FFFFF807FFFFFC1FFFFFFE7FFFF}
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnCreate = FormCreate
@@ -124,7 +123,6 @@ object frmLibMain: TfrmLibMain
   OnMouseUp = FormMouseUp
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object RenderTimer: TTimer
     Enabled = False

@@ -2,7 +2,7 @@ object frmLibMain: TfrmLibMain
   Left = 216
   Top = 135
   BorderStyle = bsSizeToolWin
-  Caption = #1052#1072#1090#1077#1084#1072#1090#1080#1095#1077#1089#1082#1080#1081' '#1084#1072#1103#1090#1085#1080#1082
+  Caption = 'Mathematical pendulum'
   ClientHeight = 452
   ClientWidth = 686
   Color = clBtnFace

@@ -2,7 +2,7 @@ object frmOptions: TfrmOptions
   Left = 268
   Top = 45
   BorderStyle = bsSizeToolWin
-  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  Caption = 'Settings'
   ClientHeight = 636
   ClientWidth = 194
   Color = clBtnFace
@@ -116,25 +116,23 @@ object frmOptions: TfrmOptions
     003F8000003F8000003F8000003F8000003F8000003FC000003FE000003FF000
     003FF800007FFC0001FFFE0007FFFF001FFFFF807FFFFFC1FFFFFFE7FFFF}
   Menu = MainMenu1
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object groupVisualize: TGroupBox
     Left = 8
     Top = 360
     Width = 177
     Height = 81
-    Caption = #1042#1080#1079#1091#1072#1083#1080#1079#1072#1094#1080#1103
+    Caption = 'Visualization'
     TabOrder = 0
     object groupDist: TGroupBox
       Left = 8
       Top = 16
       Width = 161
       Height = 57
-      Caption = #1044#1080#1089#1090#1072#1085#1094#1080#1103
+      Caption = 'Distance'
       TabOrder = 0
       object tbDist: TTrackBar
         Left = 8
@@ -154,7 +152,7 @@ object frmOptions: TfrmOptions
     Top = 8
     Width = 177
     Height = 105
-    Caption = #1055#1086#1090#1077#1085#1094#1080#1072#1083#1099' ('#1042' *10^-14)'
+    Caption = 'Potentials (V *10^-14)'
     TabOrder = 1
     object txtUpP: TLabeledEdit
       Left = 8
@@ -163,7 +161,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 92
       EditLabel.Height = 13
-      EditLabel.Caption = #1042#1077#1088#1093#1085#1103#1103' '#1087#1083#1072#1089#1090#1080#1085#1072
+      EditLabel.Caption = 'Upper plate'
       TabOrder = 0
       Text = '0,2'
     end
@@ -174,7 +172,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 90
       EditLabel.Height = 13
-      EditLabel.Caption = #1053#1080#1078#1085#1103#1103' '#1087#1083#1072#1089#1090#1080#1085#1072
+      EditLabel.Caption = 'Lower plate'
       TabOrder = 1
       Text = '-0,2'
     end
@@ -184,7 +182,7 @@ object frmOptions: TfrmOptions
     Top = 448
     Width = 81
     Height = 25
-    Caption = #1055#1091#1089#1082
+    Caption = 'Start'
     TabOrder = 2
     OnClick = btnStartClick
   end
@@ -193,7 +191,7 @@ object frmOptions: TfrmOptions
     Top = 448
     Width = 81
     Height = 25
-    Caption = #1057#1090#1086#1087
+    Caption = 'Stop'
     TabOrder = 3
     OnClick = btnStopClick
   end
@@ -202,7 +200,7 @@ object frmOptions: TfrmOptions
     Top = 248
     Width = 177
     Height = 105
-    Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1101#1083#1077#1082#1090#1088#1086#1085#1086#1074
+    Caption = 'Electron parameters'
     TabOrder = 4
     object txtSpeed: TLabeledEdit
       Left = 8
@@ -211,7 +209,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 136
       EditLabel.Height = 13
-      EditLabel.Caption = #1053#1072#1095#1072#1083#1100#1085#1072#1103' '#1089#1082#1086#1088#1086#1089#1090#1100' ('#1084'/'#1089'):'
+      EditLabel.Caption = 'Initial speed (m/s):'
       TabOrder = 0
       Text = '3'
     end
@@ -222,7 +220,7 @@ object frmOptions: TfrmOptions
       Height = 21
       EditLabel.Width = 60
       EditLabel.Height = 13
-      EditLabel.Caption = #1059#1075#1086#1083' ('#1075#1088#1072#1076'):'
+      EditLabel.Caption = 'Angle (deg):'
       TabOrder = 1
       Text = '0'
     end
@@ -232,14 +230,14 @@ object frmOptions: TfrmOptions
     Top = 120
     Width = 177
     Height = 121
-    Caption = #1055#1083#1072#1089#1090#1080#1085#1099
+    Caption = 'Plates'
     TabOrder = 5
     object lblDistance: TLabel
       Left = 8
       Top = 20
       Width = 163
       Height = 13
-      Caption = #1056#1072#1089#1089#1090#1086#1103#1085#1080#1077' '#1084#1077#1078#1076#1091' '#1087#1083#1072#1089#1090#1080#1085#1072#1084#1080':'
+      Caption = 'Distance between plates:'
     end
     object lblDistanceValue: TLabel
       Left = 160
@@ -254,7 +252,7 @@ object frmOptions: TfrmOptions
       Top = 68
       Width = 97
       Height = 13
-      Caption = #1044#1083#1080#1085#1072' '#1087#1083#1072#1089#1090#1080#1085' ('#1084'):'
+      Caption = 'Plate length (m):'
     end
     object lblLengthValue: TLabel
       Left = 154
@@ -293,7 +291,7 @@ object frmOptions: TfrmOptions
     Left = 8
     Top = 480
     object N1: TMenuItem
-      Caption = #1052#1077#1085#1102
+      Caption = 'Menu'
       object N2: TMenuItem
         Bitmap.Data = {
           EE030000424DEE03000000000000360000002800000012000000110000000100
@@ -328,7 +326,7 @@ object frmOptions: TfrmOptions
           633600D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000D8E9ECD8E9EC
           D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC0000}
-        Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+        Caption = 'About'
         ShortCut = 112
         OnClick = N2Click
       end
@@ -363,7 +361,7 @@ object frmOptions: TfrmOptions
           D8E9ECD8E9EC8F6F1C8F6F1C8F6F1CD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9
           ECD8E9ECD8E9EC000000D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8
           E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9EC000000}
-        Caption = #1042#1099#1093#1086#1076
+        Caption = 'Exit'
         ShortCut = 16472
         OnClick = N4Click
       end
