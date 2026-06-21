@@ -36,12 +36,12 @@ type
     Handles: Array[1..10] of LongWord;
     rotate: Integer;    // current carousel angle
     mouseX: Integer;    // last cursor X (drives rotation); -1 until first move
-    hovered: Integer;   // panel under the cursor, 0 if none
+    hovered: Integer;   // centered panel that gets the highlight frame
+    selModule: Integer; // module index (1..10) currently centred
     InitLibrary: TLibProc;
     isloaded: Boolean;
     procedure LoadModule(number: Integer);
-    function PickPanel(X, Y: Integer): Integer;
-    procedure DrawPanels(SelectMode: Boolean);
+    procedure DrawPanels;
   end;
 
 const
@@ -142,7 +142,7 @@ begin
 
     lblLoading.Caption := 'Display lists initialization';
     frmMain.pbLoading.Position := 80;
-    
+
     Sleep(loadDelay);
     Application.ProcessMessages;
     Sleep(1000);
@@ -296,7 +296,7 @@ begin
   glLoadIdentity;
 end;
 
-procedure TfrmMain.DrawPanels(SelectMode: Boolean);
+procedure TfrmMain.DrawPanels;
 var
   i: Integer;
 begin
@@ -306,15 +306,11 @@ begin
     glRotatef(i * 36, 0, 1, 0);
     glTranslatef(0, 0, 20);
 
-    if SelectMode then
-      glLoadName(i)
-    else
-      glBindTexture(GL_TEXTURE_2D, i + 6);
-
+    glBindTexture(GL_TEXTURE_2D, i + 6);
     glCallList(1);
 
-    // highlight frame around the panel the cursor is over
-    if (not SelectMode) and (i = hovered) then
+    // highlight frame around the centered (selected) panel
+    if i = hovered then
     begin
       glPushAttrib(GL_ENABLE_BIT or GL_LINE_BIT or GL_CURRENT_BIT);
       glDisable(GL_LIGHTING);
@@ -334,71 +330,6 @@ begin
   end;
 end;
 
-// Returns the module index (1..10) of the panel under the given client point,
-// or 0 if none. Uses the legacy OpenGL selection buffer.
-function TfrmMain.PickPanel(X, Y: Integer): Integer;
-const
-  BUFSIZE = 256;
-var
-  buf: array[0..BUFSIZE - 1] of GLuint;
-  hits, i, p, names: Integer;
-  minZ, z: GLuint;
-  vpW, vpH, px, py: Integer;
-begin
-  Result := 0;
-  if not isloaded then Exit;
-  vpW := ClientWidth;
-  vpH := ClientHeight;
-  if (vpW = 0) or (vpH = 0) then Exit;
-
-  wglMakeCurrent(DC, HRC);
-  glSelectBuffer(BUFSIZE, @buf[0]);
-  glRenderMode(GL_SELECT);
-  glInitNames;
-  glPushName(0);
-
-  px := X;
-  py := vpH - Y;   // GL origin is bottom-left
-
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix;
-  glLoadIdentity;
-  // gluPickMatrix(px, py, 4, 4, [0, 0, vpW, vpH]) built by hand:
-  glTranslatef((vpW - 2 * px) / 4, (vpH - 2 * py) / 4, 0);
-  glScalef(vpW / 4, vpH / 4, 1);
-  gluPerspective(30, vpW / vpH, 1, 200);
-
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity;
-  glTranslatef(0, 0, -70);
-  glRotatef(rotate, 0, 1, 0);
-  DrawPanels(True);
-
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix;
-  glMatrixMode(GL_MODELVIEW);
-
-  hits := glRenderMode(GL_RENDER);
-
-  p := 0;
-  minZ := High(GLuint);
-  for i := 0 to hits - 1 do
-  begin
-    names := buf[p]; Inc(p);
-    z := buf[p]; Inc(p);   // min depth of this hit
-    Inc(p);                // max depth (unused)
-    if names > 0 then
-    begin
-      if z <= minZ then    // keep the nearest panel
-      begin
-        minZ := z;
-        Result := buf[p + names - 1];
-      end;
-      Inc(p, names);
-    end;
-  end;
-end;
-
 procedure TfrmMain.RenderTimerTimer(Sender: TObject);
 var
   ps: TPaintStruct;
@@ -414,17 +345,18 @@ begin
   // rotation is driven by how far the cursor sits from the screen centre
   center := ClientWidth div 2;
   if mouseX < 0 then mouseX := center;
-  offset := center - mouseX;
+  offset := mouseX - center;
   dead := ClientWidth div 8;   // central dead zone where the carousel rests
 
   if Abs(offset) > dead then
   begin
     step := 1 + (Abs(offset) - dead) * 5 div (center - dead + 1);
     if step > 6 then step := 6;
+    // Swap the next two lines to reverse the spin direction.
     if offset > 0 then
-      rotate := rotate + step
+      rotate := rotate - step
     else
-      rotate := rotate - step;
+      rotate := rotate + step;
   end
   else
   begin
@@ -440,10 +372,18 @@ begin
   rotate := rotate mod 360;
   if rotate < 0 then rotate := rotate + 360;
 
+  // The preview textures are packed in reverse module order. The module to
+  // launch follows the original mapping (Floor(rotate/36)+1); the panel that
+  // visually faces the camera is its mirror (11 - selModule) and gets the frame.
+  selModule := (Round(rotate / 36) mod 10) + 1;
+  hovered := 11 - selModule;
+  if hovered > 10 then hovered := hovered - 10;
+  if hovered < 1 then hovered := hovered + 10;
+
   glTranslatef(0, 0, -70);
   glRotatef(rotate, 0, 1, 0);
   glCallList(2);
-  DrawPanels(False);
+  DrawPanels;
 
   EndPaint(Handle, ps);
   SwapBuffers(DC);
@@ -453,19 +393,16 @@ procedure TfrmMain.FormMouseMove(Sender: TObject; Shift: TShiftState;
   X, Y: Integer);
 begin
   if not isloaded then Exit;
-  mouseX := X;
-  hovered := PickPanel(X, Y);
+  mouseX := X;   // horizontal position drives the rotation in RenderTimerTimer
 end;
 
 procedure TfrmMain.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
-var
-  h: Integer;
 begin
   if (not isloaded) or (Button <> mbLeft) then Exit;
-  h := PickPanel(X, Y);
-  if (h >= 1) and (h <= 10) and (Handles[h] > 0) then
-    LoadModule(h);
+  // launch the module that is currently centred (and highlighted)
+  if (selModule >= 1) and (selModule <= 10) and (Handles[selModule] > 0) then
+    LoadModule(selModule);
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
@@ -474,6 +411,8 @@ begin
   isloaded := False;
   mouseX := -1;
   hovered := 0;
+  selModule := 0;
 end;
 
 end.
+
