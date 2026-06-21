@@ -3,6 +3,9 @@
         <ProjectGuid>{4F1B0A2C-9D3E-4C7A-8B1F-2E6D5A0C7B33}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="physic.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="data\engine\engine.dproj">
             <Dependencies/>
         </Projects>
@@ -39,9 +42,6 @@
         <Projects Include="data\modules\DoublePendulum\DoublePendulum.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="physic.dproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -50,6 +50,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="physic">
+        <MSBuild Projects="physic.dproj"/>
+    </Target>
+    <Target Name="physic:Clean">
+        <MSBuild Projects="physic.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="physic:Make">
+        <MSBuild Projects="physic.dproj" Targets="Make"/>
+    </Target>
     <Target Name="engine">
         <MSBuild Projects="data\engine\engine.dproj"/>
     </Target>
@@ -158,23 +167,14 @@
     <Target Name="DoublePendulum:Make">
         <MSBuild Projects="data\modules\DoublePendulum\DoublePendulum.dproj" Targets="Make"/>
     </Target>
-    <Target Name="physic">
-        <MSBuild Projects="physic.dproj"/>
-    </Target>
-    <Target Name="physic:Clean">
-        <MSBuild Projects="physic.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="physic:Make">
-        <MSBuild Projects="physic.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="engine;MakarovTools;Rocket;Oscillator;Kepler;Multipole;Electrons;WaterWaves;Rain;SpringPendulum;Pendulum;DoublePendulum;physic"/>
+        <CallTarget Targets="physic;engine;MakarovTools;Rocket;Oscillator;Kepler;Multipole;Electrons;WaterWaves;Rain;SpringPendulum;Pendulum;DoublePendulum"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="engine:Clean;MakarovTools:Clean;Rocket:Clean;Oscillator:Clean;Kepler:Clean;Multipole:Clean;Electrons:Clean;WaterWaves:Clean;Rain:Clean;SpringPendulum:Clean;Pendulum:Clean;DoublePendulum:Clean;physic:Clean"/>
+        <CallTarget Targets="physic:Clean;engine:Clean;MakarovTools:Clean;Rocket:Clean;Oscillator:Clean;Kepler:Clean;Multipole:Clean;Electrons:Clean;WaterWaves:Clean;Rain:Clean;SpringPendulum:Clean;Pendulum:Clean;DoublePendulum:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="engine:Make;MakarovTools:Make;Rocket:Make;Oscillator:Make;Kepler:Make;Multipole:Make;Electrons:Make;WaterWaves:Make;Rain:Make;SpringPendulum:Make;Pendulum:Make;DoublePendulum:Make;physic:Make"/>
+        <CallTarget Targets="physic:Make;engine:Make;MakarovTools:Make;Rocket:Make;Oscillator:Make;Kepler:Make;Multipole:Make;Electrons:Make;WaterWaves:Make;Rain:Make;SpringPendulum:Make;Pendulum:Make;DoublePendulum:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

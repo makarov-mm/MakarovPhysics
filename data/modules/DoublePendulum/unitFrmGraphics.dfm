@@ -3,8 +3,8 @@ object frmGraphics: TfrmGraphics
   Top = 171
   BorderStyle = bsSizeToolWin
   Caption = 'Graph'
-  ClientHeight = 436
-  ClientWidth = 678
+  ClientHeight = 458
+  ClientWidth = 710
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -122,8 +122,8 @@ object frmGraphics: TfrmGraphics
   object tabs: TTabControl
     Left = 0
     Top = 0
-    Width = 678
-    Height = 436
+    Width = 710
+    Height = 458
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -132,6 +132,8 @@ object frmGraphics: TfrmGraphics
       'Angle velocity'
       'Angle acceleration')
     TabIndex = 0
+    ExplicitWidth = 678
+    ExplicitHeight = 436
     object chartPendulum2: TChart
       Left = 338
       Top = 24
