@@ -1,7 +1,5 @@
 # ---- Delphi / RAD Studio build output ----
 *.dcu
-*.exe
-*.dll
 *.bpl
 *.dcp
 *.so
