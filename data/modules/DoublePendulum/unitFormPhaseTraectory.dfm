@@ -115,45 +115,41 @@ object frmPhaseTraectory: TfrmPhaseTraectory
     000FF000000FE0000007E0000007C0000003C000000380000001400000024000
     000280000001C0000003C0000003E0000007E0000007F000000FF000000FF800
     001FFC00003FFE00007FFF0000FFFFC003FFFFF00FFFFFFFFFFFFFFFFFFF}
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
-  PixelsPerInch = 96
   TextHeight = 13
   object chartPhase1: TChart
     Left = 64
     Top = 56
     Width = 281
     Height = 217
-    BackWall.Brush.Color = clWhite
     BackWall.Brush.Style = bsClear
+    Legend.Visible = False
     Title.Text.Strings = (
-      #1052#1072#1103#1090#1085#1080#1082' 1')
+      'Pendulum 1')
     BottomAxis.Labels = False
+    BottomAxis.LabelsFormat.Visible = False
     BottomAxis.Title.Caption = 'Angle (deg)'
     LeftAxis.Labels = False
+    LeftAxis.LabelsFormat.Visible = False
     LeftAxis.Title.Caption = 'Speed (deg/s)'
-    Legend.Visible = False
     View3D = False
     BevelOuter = bvNone
     Enabled = False
     TabOrder = 0
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
     object Series1: TPointSeries
-      Marks.ArrowLength = 0
-      Marks.Visible = False
+      HoverElement = [heCurrent]
       SeriesColor = clRed
+      ClickableLine = False
       Pointer.HorizSize = 2
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
       Pointer.VertSize = 2
-      Pointer.Visible = True
-      XValues.DateTime = False
       XValues.Name = 'X'
-      XValues.Multiplier = 1.000000000000000000
       XValues.Order = loAscending
-      YValues.DateTime = False
       YValues.Name = 'Y'
-      YValues.Multiplier = 1.000000000000000000
       YValues.Order = loNone
     end
   end
@@ -162,36 +158,34 @@ object frmPhaseTraectory: TfrmPhaseTraectory
     Top = 176
     Width = 281
     Height = 217
-    BackWall.Brush.Color = clWhite
     BackWall.Brush.Style = bsClear
+    Legend.Visible = False
     Title.Text.Strings = (
-      #1052#1072#1103#1090#1085#1080#1082' 2')
+      'Pendulum 2')
     BottomAxis.Labels = False
+    BottomAxis.LabelsFormat.Visible = False
     BottomAxis.Title.Caption = 'Angle (deg)'
     LeftAxis.Labels = False
+    LeftAxis.LabelsFormat.Visible = False
     LeftAxis.Title.Caption = 'Speed (deg/s)'
-    Legend.Visible = False
     View3D = False
     BevelOuter = bvNone
     Enabled = False
     TabOrder = 1
     OnResize = chartPhase2Resize
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
     object PointSeries1: TPointSeries
-      Marks.ArrowLength = 0
-      Marks.Visible = False
+      HoverElement = [heCurrent]
       SeriesColor = clRed
+      ClickableLine = False
       Pointer.HorizSize = 2
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
       Pointer.VertSize = 2
-      Pointer.Visible = True
-      XValues.DateTime = False
       XValues.Name = 'X'
-      XValues.Multiplier = 1.000000000000000000
       XValues.Order = loAscending
-      YValues.DateTime = False
       YValues.Name = 'Y'
-      YValues.Multiplier = 1.000000000000000000
       YValues.Order = loNone
     end
   end

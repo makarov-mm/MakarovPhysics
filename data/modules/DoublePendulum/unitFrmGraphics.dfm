@@ -115,11 +115,9 @@ object frmGraphics: TfrmGraphics
     000FF000000FE0000007E0000007C0000003C000000380000001400000024000
     000280000001C0000003C0000003E0000007E0000007F000000FF000000FF800
     001FFC00003FFE00007FFF0000FFFFC003FFFFF00FFFFFFFFFFFFFFFFFFF}
-  OldCreateOrder = False
   OnCanResize = FormCanResize
   OnClose = FormClose
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object tabs: TTabControl
     Left = 0
@@ -130,73 +128,63 @@ object frmGraphics: TfrmGraphics
     Style = tsFlatButtons
     TabOrder = 0
     Tabs.Strings = (
-      #1059#1075#1086#1083
-      #1059#1075#1083#1086#1074#1072#1103' '#1089#1082#1086#1088#1086#1089#1090#1100
-      #1059#1075#1083#1086#1074#1086#1077' '#1091#1089#1082#1086#1088#1077#1085#1080#1077)
+      'Angle'
+      'Angle velocity'
+      'Angle acceleration')
     TabIndex = 0
-    ExplicitWidth = 680
-    ExplicitHeight = 438
     object chartPendulum2: TChart
-      Left = 344
-      Top = 32
+      Left = 338
+      Top = 24
       Width = 337
       Height = 401
-      BackWall.Brush.Color = clWhite
       BackWall.Brush.Style = bsClear
-      Title.Text.Strings = (
-        #1059#1075#1086#1083' ('#1052#1072#1103#1090#1085#1080#1082' 2) ['#1075#1088#1072#1076']')
-      BottomAxis.Visible = False
       Legend.Visible = False
+      Title.Text.Strings = (
+        'Angle (Pendulum 2) [deg]')
+      BottomAxis.Visible = False
       View3D = False
       BevelOuter = bvNone
       Enabled = False
       TabOrder = 0
+      DefaultCanvas = 'TGDIPlusCanvas'
+      ColorPaletteIndex = 13
       object Series2: TLineSeries
-        Marks.ArrowLength = 8
-        Marks.Visible = False
+        HoverElement = [heCurrent]
         SeriesColor = clRed
+        Brush.BackColor = clDefault
         Pointer.InflateMargins = True
         Pointer.Style = psRectangle
-        Pointer.Visible = False
-        XValues.DateTime = False
         XValues.Name = 'X'
-        XValues.Multiplier = 1.000000000000000000
         XValues.Order = loAscending
-        YValues.DateTime = False
         YValues.Name = 'Y'
-        YValues.Multiplier = 1.000000000000000000
         YValues.Order = loNone
       end
     end
     object chartPendulum1: TChart
-      Left = 39
+      Left = 1
       Top = 24
       Width = 337
       Height = 401
-      BackWall.Brush.Color = clWhite
       BackWall.Brush.Style = bsClear
-      Title.Text.Strings = (
-        #1059#1075#1086#1083' ('#1052#1072#1103#1090#1085#1080#1082' 1) ['#1075#1088#1072#1076']')
-      BottomAxis.Visible = False
       Legend.Visible = False
+      Title.Text.Strings = (
+        'Angle (Pendulum 1) [deg]')
+      BottomAxis.Visible = False
       View3D = False
       BevelOuter = bvNone
       Enabled = False
       TabOrder = 1
+      DefaultCanvas = 'TGDIPlusCanvas'
+      ColorPaletteIndex = 13
       object LineSeries1: TLineSeries
-        Marks.ArrowLength = 8
-        Marks.Visible = False
+        HoverElement = [heCurrent]
         SeriesColor = clRed
+        Brush.BackColor = clDefault
         Pointer.InflateMargins = True
         Pointer.Style = psRectangle
-        Pointer.Visible = False
-        XValues.DateTime = False
         XValues.Name = 'X'
-        XValues.Multiplier = 1.000000000000000000
         XValues.Order = loAscending
-        YValues.DateTime = False
         YValues.Name = 'Y'
-        YValues.Multiplier = 1.000000000000000000
         YValues.Order = loNone
       end
     end

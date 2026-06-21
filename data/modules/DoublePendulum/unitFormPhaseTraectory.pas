@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, TeEngine, Series, ExtCtrls, TeeProcs, Chart, ComCtrls;
+  Dialogs, TeEngine, Series, ExtCtrls, TeeProcs, Chart, ComCtrls,
+  VclTee.TeeGDIPlus;
 
 type
   TfrmPhaseTraectory = class(TForm)
