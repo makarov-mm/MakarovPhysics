@@ -107,3 +107,9 @@ This project was created as an experimental environment for exploring computer g
 ## Notes
 
 The project reflects practical experimentation with graphics and simulation concepts rather than production-level engineering.
+
+## Support
+
+If you found this project interesting or useful, you can support my work:
+
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/makarov-mm?style=flat&logo=github)](https://github.com/sponsors/makarov-mm)
